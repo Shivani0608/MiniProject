@@ -27,14 +27,12 @@
 
 
         ResultSet rs = stmt.executeQuery();
-        //out.print("<form action='lab_detail.jsp/' method='post'>");
         out.print("<div>");
         out.print("<table border=1>");
 
         out.print("<tr> <th> Lab Name </th> </tr>");
         while (rs.next()) {
 
-            //String lab = rs.(2)
 
             out.print("<tr>");
             out.print("<td>");
