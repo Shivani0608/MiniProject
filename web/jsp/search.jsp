@@ -25,7 +25,6 @@
                 "where lab_time.avail_day = ?");
         stmt.setInt(1, day);
 
-
         ResultSet rs = stmt.executeQuery();
         out.print("<div>");
         out.print("<table border=1>");
