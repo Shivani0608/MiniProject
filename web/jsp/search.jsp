@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.java.myDB" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
@@ -6,48 +7,68 @@
 <%@ page import="java.util.Date" %>
 
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<div>
+    <table id="tab1" class="display" style="width:100%">
+        <thead>
+        <tr>
+            <th>Lab Name</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <%
+            Date date;
+            String date1;
+            int day;
+            try {
+                date1 = request.getParameter("date");
+
+                date = new SimpleDateFormat("yyyy-MM-dd").parse(date1);
+                day = date.getDay();
+                Connection con = myDB.getCon();
+                PreparedStatement stmt = con.prepareStatement("select * from lab_time inner join" +
+                        " lab_details on lab_time.lab_no = lab_details.lab_no " +
+                        "where lab_time.avail_day = ?");
+                stmt.setInt(1, day);
+
+                ResultSet rs = stmt.executeQuery();
+                while (rs.next()) {
 
 
-<%
-    Date date;
-    String date1;
-    int day;
-    try {
-        date1 = request.getParameter("date");
+                    out.print("<tr>");
+                    out.print("<td>");
 
-        date = new SimpleDateFormat("yyyy-MM-dd").parse(date1);
-        day = date.getDay();
-        Connection con = myDB.getCon();
-        PreparedStatement stmt = con.prepareStatement("select * from lab_time inner join" +
-                " lab_details on lab_time.lab_no = lab_details.lab_no " +
-                "where lab_time.avail_day = ?");
-        stmt.setInt(1, day);
+                    out.print("<button onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_no") + "'>");
+                    //out.print("<a href='#labs?jsp/labs.jsp?lab_name=" + rs.getString("lab_no") + "'>");
+                    out.print(rs.getString(2));
+                    out.print("</a>");
+                    out.print("</tr>");
 
-        ResultSet rs = stmt.executeQuery();
-        out.print("<div>");
-        out.print("<table border=1>");
-
-        out.print("<tr> <th> Lab Name </th> </tr>");
-        while (rs.next()) {
+                }
 
 
-            out.print("<tr>");
-            out.print("<td>");
-
-            out.print("<a href='jsp/labs.jsp?lab_name=" + rs.getString("lab_no") + "'>");
-            //out.print("<a href='#labs?jsp/labs.jsp?lab_name=" + rs.getString("lab_no") + "'>");
-            out.print(rs.getString(2));
-            out.print("</a>");
-            out.print("</tr>");
-
-        }
+                //out.print("</table>");
 
 
-        out.print("</table>");
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        %>
+        </tbody>
+    </table>
 
 
-    } catch (Exception e) {
-        e.printStackTrace();
+</div>
+
+<script>
+    $(function () {
+        $('#tab1').DataTable();
+    });
+
+    // alert("Here");
+    function openLabDetails(e) {
+        var lab_no = $(e).data("lab");
+        $("#labs").load("jsp/labs.jsp?lab_name=" + lab_no);
+        // console.log("Lab NO:"+lab_no);
     }
-%>
+</script>

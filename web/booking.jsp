@@ -17,51 +17,28 @@
     <!-- Material Design Bootstrap -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/css/mdb.min.css" rel="stylesheet">
 
-    <!	<script type="text/javascript">
-    $(document).ready(function(){
-        $("#page1").click(function(){
-            $('#result').load('pages/page1.html');
-            //alert("Thanks for visiting!");
-        });
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
-        $("#page2").click(function(){
-            $('#result').load('pages/page2.html');
-            //alert("Thanks for visiting!");
-        });
-    });
-</script>
 
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#page1").click(function(){
-                $('#result').load('pages/page1.html');
-                //alert("Thanks for visiting!");
-            });
-
-            $("#page2").click(function(){
-                $('#result').load('pages/page2.html');
-                //alert("Thanks for visiting!");
-            });
-        });
-    </script>
-
-    -- JQuery -->
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- JQuery -->
+    <%--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--%>
     <!-- Bootstrap tooltips -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
     <!-- Bootstrap core JavaScript -->
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
     <!-- MDB core JavaScript -->
+
+    <%--<script src="http://code.jquery.com/jquery-latest.js"></script>--%>
+
     <script type="text/javascript"
             src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/js/mdb.min.js"></script>
 
-    <script src="http://code.jquery.com/jquery-latest.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <%--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--%>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
 
 </head>
 
@@ -104,31 +81,31 @@
 
 <div class="container-fluid mt-5">
 
-    <div class="row mt-4" style="height: 100%">
-        <div id="lab_name" class="col-sm-3" style="background-color: #DCDCDC; margin-top: 20px; height: 100%">
+    <center>
+        <div class="row mt-4">
+            <div class="col-sm-8">
+                <div class="main" id="main">
+                    <form id="myForm">
+                        <div class="mt-1">
+                            <p>Search Labs by Date:</p>
+                            <input type="date" name="date" id="date" required>
+                            <button class=" fa fa-search btn btn-primary" type="submit">
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
-        </div>
-
-        <div class="col-sm-9 pr-1">
-            <div class="main" id="main">
-                <form id="myForm">
-                    <div class="mt-1">
-                        <p>Search Labs by Date:</p>
-                        <input type="date" name="date" id="date" required>
-                        <button class=" fa fa-search btn btn-primary" type="submit">
-                        </button>
-                    </div>
-                </form>
             </div>
 
         </div>
-    </div>
+    </center>
 
     <div class="row">
-        <div id="labs">
+        <%--<div class="col-sm-4">--%>
+        <div id="lab_name" style="margin-top: 20px; height: 100%">
 
         </div>
-
+        <%--</div>--%>
     </div>
 
 
@@ -140,23 +117,10 @@
             $("#lab_name").load("jsp/search.jsp?" + $("#myForm").serialize());
 
         });
+
+
     });
 </script>
-
-<script type="text/javascript">
-    $(document).ready(function(){
-        $("#page1").click(function(){
-            $('#result').load('pages/page1.html');
-            //alert("Thanks for visiting!");
-        });
-
-        $("#page2").click(function(){
-            $('#result').load('pages/page2.html');
-            //alert("Thanks for visiting!");
-        });
-    });
-</script>
-
 
 
 </body>

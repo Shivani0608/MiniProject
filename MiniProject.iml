@@ -22,5 +22,8 @@
     <orderEntry type="library" scope="PROVIDED" name="Tomcat 9.0.81" level="application_server_libraries" />
     <orderEntry type="library" name="jquery-latest" level="application" />
     <orderEntry type="library" name="Java EE 6-Java EE 6" level="project" />
+    <orderEntry type="library" name="datatables" level="application" />
+    <orderEntry type="library" name="jquery.dataTables" level="application" />
+    <orderEntry type="library" name="jquery-1.8.2" level="application" />
   </component>
 </module>
