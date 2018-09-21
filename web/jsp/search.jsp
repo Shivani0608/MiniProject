@@ -76,6 +76,6 @@
     function openLabDetails(e) {
         var lab_no = $(e).data("lab");
         $("#labs").load("jsp/labs.jsp?lab_name=" + lab_no);
-        // console.log("Lab NO:"+lab_no);
+         console.log("Lab NO:"+lab_no);
     }
 </script>

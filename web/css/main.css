@@ -16,4 +16,17 @@ body {
     padding: 0px;
     text-align: left;
 }
+.mylabel{
+    margin-left: 200px;
+    float: left;
+    alignment: right;
+
+
+}
+.myinput{
+    margin-left: 400px;
+    float: right;
+    /*float:;*/
+}
+
 

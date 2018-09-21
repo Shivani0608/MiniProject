@@ -1,7 +1,9 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="com.java.myDB" %>
 <%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+
+<%--
   Created by IntelliJ IDEA.
   User: shivani
   Date: 19/9/18
@@ -9,6 +11,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<html>
+<head>
+    <link rel="stylesheet" href="../css/main.css">
+</head>
+
+
 <%
     String lab_name = request.getParameter("lab_name");
     Connection con = null;
@@ -18,25 +27,24 @@
         ps.setString(1, lab_name);
         ResultSet rs = ps.executeQuery();
 
-        out.print("<div>");
-        out.print("<table border=2>");
+        out.print("<br><br><div id='temp_lab' style='box-shadow: 5px 10px 8px #888888; width:850px;'><center>");
 
         while (rs.next()) {
-            out.print("<tr align=left><th>Lab Name:</th><th>"+ rs.getString("lab_no")+"</th></tr>");
-            out.print("<tr align=left><th>Capacity:</th><th>"+ rs.getString("capacity")+"</th></tr>");
-            out.print("<tr align=left><th>Department Name:</th><th>"+ rs.getString("dept_name")+"</th></tr>");
-            out.print("<tr align=left><th>HOD Name:</th><th>"+ rs.getString("hod_name")+"</th></tr>");
-            out.print("<tr align=left><th>Assistant Name:</th><th>"+ rs.getString("assistant_name")+"</th></tr>");
-            out.print("<tr align=left><th>Assistant Mobile No:</th><th>"+ rs.getString("mob_no")+"</th></tr>");
-            out.print("<tr align=left><th>Assistant Email:</th><th>"+ rs.getString("email")+"</th></tr>");
-
+            out.print("<div><label class='mylabel''>Lab Name:</label><input type='text' class='myinput' value='" + rs.getString("lab_no") + "' readonly></div><br>");
+            out.print("<label class='mylabel'>Capacity:</label><input type='text' class='myinput' value='" + rs.getString("capacity") +  "' readonly><br>");
+            out.print("<label class='mylabel'>Department Name:</label><input type='text' class='myinput' value='" + rs.getString("dept_name") + "' readonly><br>");
+            out.print("<label class='mylabel'>HOD Name:</label><input type='text' class='myinput' value='" + rs.getString("hod_name") + "' readonly><br>");
+            out.print("<label class='mylabel'>Assistant Name:</label><input type='text' class='myinput' value='" + rs.getString("assistant_name") + "' readonly><br>");
+            out.print("<label class='mylabel'>Assistant Mobile Number:</label><input type='text' class='myinput' value='" + rs.getString("mob_no") + "' readonly><br>");
+            out.print("<label class='mylabel'>Assistant Email:</label><input type='text' class='myinput' value='" + rs.getString("email") + "' readonly><br>");
         }
+        out.print("</center></div>");
 
-        out.print("</table>");
-        out.print("</div>");
 
     } catch (Exception e) {
         e.printStackTrace();
     }
 
 %>
+
+</html>
