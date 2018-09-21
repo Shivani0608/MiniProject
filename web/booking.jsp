@@ -79,11 +79,12 @@
     <!-- Collapsible content -->
 </nav>
 
-<div class="container-fluid mt-5">
+<div class="container-fluid">
 
-    <center>
-        <div class="row mt-4">
-            <div class="col-sm-8">
+
+    <div class="row mt-4">
+        <div class="col">
+            <center>
                 <div class="main" id="main">
                     <form id="myForm">
                         <div class="mt-1">
@@ -94,20 +95,25 @@
                         </div>
                     </form>
                 </div>
-
-            </div>
-
+            </center>
         </div>
-    </center>
+    </div>
+
 
     <div class="row">
         <%--<div class="col-sm-4">--%>
-        <div id="lab_name" style="margin-top: 20px; height: 100%">
+        <div id="lab_name" style="margin-top: 50px; width: 100%">
 
         </div>
         <%--</div>--%>
     </div>
+</div>
 
+<div class="container-fluid">
+    <div class="row" id="labs">
+
+
+    </div>
 
 </div>
 <script type="text/javascript">

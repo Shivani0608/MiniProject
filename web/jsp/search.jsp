@@ -12,6 +12,9 @@
         <thead>
         <tr>
             <th>Lab Name</th>
+            <th>From</th>
+            <th>To</th>
+
 
         </tr>
         </thead>
@@ -37,11 +40,15 @@
 
                     out.print("<tr>");
                     out.print("<td>");
-
-                    out.print("<button onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_no") + "'>");
-                    //out.print("<a href='#labs?jsp/labs.jsp?lab_name=" + rs.getString("lab_no") + "'>");
+                    out.print("<button class='mybtn' onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_no") + "'>");
                     out.print(rs.getString(2));
-                    out.print("</a>");
+                    out.print("</td>");
+                    out.print("<td>");
+                    out.print(rs.getString("from_time"));
+                    out.print("</td>");
+                    out.print("<td>");
+                    out.print(rs.getString("to_time"));
+                    out.print("</td>");
                     out.print("</tr>");
 
                 }
