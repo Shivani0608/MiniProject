@@ -1,4 +1,10 @@
-<!DOCTYPE html>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Date" %>
+<%@ page import="com.java.myDB" %>
+<%@ page import="java.sql.*" %>
+
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html lang="en">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -16,66 +22,13 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.9/css/mdb.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
     <style>
         body {
             font-family: "Arial";
             color: #fff;
         }
 
-        input[type="text"], select.form-control {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #101b2d;
-            border-radius: 0;
-        }
-
-        input[type="tel"], select.form-control {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #101b2d;
-            border-radius: 0;
-        }
-
-        input[type="email"], select.form-control {
-            background: transparent;
-            border: none;
-            border-bottom: 1px solid #101b2d;
-            border-radius: 0;
-        }
-
-        .button1 {
-            color: white;
-            font-family: "Comic Sans MS";
-            background-color: #3cb22c;
-            border-top-color: #337e29;
-        }
-
-        .button2 {
-            color: white;
-            font-family: "Comic Sans MS";
-            background-color: #e31e0e;
-            border-top-color: #a9281d;
-        }
-
-        .button4 {
-            border-radius: 12px;
-        }
-
-        .page-bg, card-body {
-
-            background-size: cover;
-            -webkit-filter: blur(2px);
-            -moz-filter: blur(2px);
-            -o-filter: blur(2px);
-            -ms-filter: blur(2px);
-            filter: blur(2px);
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: -1;
-        }
     </style>
     <title>Form</title>
     <meta charset="utf-8">
@@ -159,6 +112,10 @@
                                   placeholder="Enter full description about the event (No of attendees,organizers etc)." name="descp"></textarea>
                     </div>
 
+                    <%--<%--%>
+                        <%--String time1= (String) session.getAttribute("from_time");--%>
+                        <%--out.print(time1);--%>
+                    <%--%>--%>
                     <div class="row">
 
                         <div class="form-group" align="left">

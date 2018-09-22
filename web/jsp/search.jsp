@@ -68,9 +68,9 @@
 </div>
 
 <script>
-    $(function () {
+    $(document).ready(function () {
         $('#tab1').DataTable();
-    });mylabel
+    });//mylabel
 
     // alert("Here");
     function openLabDetails(e) {

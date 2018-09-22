@@ -19,6 +19,13 @@
 
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js">
+
+    <%--https://code.jquery.com/jquery-3.3.1.js--%>
+
+
+
 
     <!-- JQuery -->
     <%--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>--%>
@@ -68,9 +75,6 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="registration.jsp">Register</a>
-            </li>
-            <li class="nav-item">
                 <a class="nav-link" href="logout.jsp">Logout</a>
             </li>
             <!-- Dropdown -->
@@ -103,7 +107,7 @@
 
     <div class="row">
         <%--<div class="col-sm-4">--%>
-        <div id="lab_name" style="margin-top: 50px; width: 100%">
+        <div class="container-fluid" id="lab_name" style="margin-top: 50px;margin-bottom: 50px; width: 95%">
 
         </div>
         <%--</div>--%>
@@ -124,10 +128,10 @@
         $("#myForm").submit(function (e) {
             e.preventDefault();
             $("#lab_name").load("jsp/search.jsp?" + $("#myForm").serialize());
-            // $([document.documentElement, document.body]).animate({
-            //   //  scrollTop: $("#lab_name").offset().top - 60
-            // }, 2000);
-            //
+             /*$([document.documentElement, document.body]).animate({
+              scrollTop: $("#lab_name").offset().top - 60
+             }, 2000);
+*/
             if($('#labs').length){
                 $("#labs").hide();
 
