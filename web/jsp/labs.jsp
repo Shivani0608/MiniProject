@@ -27,20 +27,70 @@
         ps.setString(1, lab_name);
         ResultSet rs = ps.executeQuery();
 
-        out.print("<br><br><div id='temp_lab' style='box-shadow: 5px 10px 8px #888888; width:850px;'><center>");
+        out.print("<div id='temp_lab' style='box-shadow: 20px 20px 20px #888888; width:820px; height:auto'>");
 
         while (rs.next()) {
-            out.print("<div><label class='mylabel''>Lab Name:</label><input type='text' class='myinput' value='" + rs.getString("lab_no") + "' readonly></div><br>");
-            out.print("<label class='mylabel'>Capacity:</label><input type='text' class='myinput' value='" + rs.getString("capacity") +  "' readonly><br>");
-            out.print("<label class='mylabel'>Department Name:</label><input type='text' class='myinput' value='" + rs.getString("dept_name") + "' readonly><br>");
-            out.print("<label class='mylabel'>HOD Name:</label><input type='text' class='myinput' value='" + rs.getString("hod_name") + "' readonly><br>");
-            out.print("<label class='mylabel'>Assistant Name:</label><input type='text' class='myinput' value='" + rs.getString("assistant_name") + "' readonly><br>");
-            out.print("<label class='mylabel'>Assistant Mobile Number:</label><input type='text' class='myinput' value='" + rs.getString("mob_no") + "' readonly><br>");
-            out.print("<label class='mylabel'>Assistant Email:</label><input type='text' class='myinput' value='" + rs.getString("email") + "' readonly><br>");
+%>
+<div class="row mt-2">
+    <div class="col-md-6">
+        <label class="mylabel">Lab Name</label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" value="<%=rs.getString("lab_no")%>" readonly>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-6">
+        <label class="mylabel">Capacity</label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" value="<%=rs.getString("capacity")%>" readonly>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-6">
+        <label class="mylabel">Department</label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" value="<%=rs.getString("dept_name")%>" readonly>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-6">
+        <label class="mylabel">HOD Name</label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" value="<%=rs.getString("hod_name")%>" readonly>
+    </div>
+</div>
+<div class="row mt-2">
+    <div class="col-md-6">
+        <label class="mylabel">Assistant Name</label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" value="<%=rs.getString("assistant_name")%>" readonly>
+    </div>
+</div><div class="row mt-2 ">
+    <div class="col-md-6">
+        <label class="mylabel">Assistant Mobile Number </label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" value="<%=rs.getString("mob_no")%>" readonly>
+    </div>
+</div>
+<div class="row mt-2 pb-4">
+    <div class="col-md-6">
+        <label class="mylabel">Assistant Email</label>
+    </div>
+    <div class="col-md-6">
+        <input type="text" value="<%=rs.getString("email")%>" readonly>
+    </div>
+</div>
+</div>
+    <%--<input class="myinput col-sm-6" type="text" value="<%=rs.getString("lab_no")%>" readonly><br>--%>
+
+<%
         }
-        out.print("</center></div>");
-
-
     } catch (Exception e) {
         e.printStackTrace();
     }

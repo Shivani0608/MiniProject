@@ -118,12 +118,20 @@
     </div>
 
 </div>
+<div style="width: 100%; height:300px"></div>
 <script type="text/javascript">
     $(function () {
         $("#myForm").submit(function (e) {
             e.preventDefault();
             $("#lab_name").load("jsp/search.jsp?" + $("#myForm").serialize());
+            // $([document.documentElement, document.body]).animate({
+            //   //  scrollTop: $("#lab_name").offset().top - 60
+            // }, 2000);
+            //
+            if($('#labs').length){
+                $("#labs").hide();
 
+            }
         });
 
 
