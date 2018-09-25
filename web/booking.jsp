@@ -128,10 +128,7 @@
         $("#myForm").submit(function (e) {
             e.preventDefault();
             $("#lab_name").load("jsp/search.jsp?" + $("#myForm").serialize());
-             /*$([document.documentElement, document.body]).animate({
-              scrollTop: $("#lab_name").offset().top - 60
-             }, 2000);
-*/
+            
             if($('#labs').length){
                 $("#labs").hide();
 
@@ -140,6 +137,7 @@
 
 
     });
+    document.getElementById("date").valueAsDate=new Date();
 </script>
 
 </body>
