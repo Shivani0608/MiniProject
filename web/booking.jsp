@@ -54,7 +54,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
 
     <!-- Navbar brand -->
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#"><i class="fa fa-institution" aria-hidden="true"></i>&nbsp;INFRASTRUCTURE ALLOCATION </a>
 
     <!-- Collapse button -->
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
@@ -69,13 +69,8 @@
 
         <!-- Links -->
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home
-                    <span class="sr-only">(current)</span>
-                </a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="logout.jsp">Logout</a>
+                <a class="nav-link" href="logout.jsp" data-toggle="tooltip" title="LogOut"><i class="fa fa-sign-out fa-rotate-180 fa-lg" aria-hidden="true"></i></a>
             </li>
             <!-- Dropdown -->
         </ul>
@@ -95,7 +90,7 @@
                         <div class="mt-1">
                             <p>Search Labs by Date:</p>
                             <input type="date" name="date" id="date" required>
-                            <button class=" fa fa-search btn btn-primary" type="submit">
+                            <button class=" fa fa-search btn btn-primary" data-toggle="tooltip" title="Search" type="submit" >
                             </button>
                         </div>
                     </form>
@@ -128,7 +123,7 @@
         $("#myForm").submit(function (e) {
             e.preventDefault();
             $("#lab_name").load("jsp/search.jsp?" + $("#myForm").serialize());
-            
+
             if($('#labs').length){
                 $("#labs").hide();
 
