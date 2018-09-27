@@ -32,8 +32,8 @@
     <div class="col-lg-4 col-md-12">
         <form class="text-center border border-light mt-5 p-5" method="post"
               style="box-shadow: 2px 2px 10px #888888; background-color:#ffffff" action="auth_user">
-
-            <p class="h4 mb-4">Sign in</p>
+            <!--<i class="fa fa-user-circle fa-5x" aria-hidden="true"></i>-->
+            <img src="img/logo.png" width="150px"><br><p class="h4 mb-4">Sign in</p>
 
             <!-- Email -->
             <input type="text" id="txt_id" name="txt_id" class="form-control mb-4" placeholder="E-mail">

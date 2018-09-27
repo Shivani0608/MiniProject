@@ -39,13 +39,13 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 <div class="container-fluid" padding-left="100px">
-    <body background="img/reg2.jpg" style="background-repeat: no-repeat;background-size: cover">
+    <body style="background-repeat: no-repeat;background-size: cover">
 
     <div class="card-wrapper" style="width:550px; margin-left: 30%; margin-top:20px; margin-bottom: 20px;">
 
         <div class="card-fat" style="background-color:white">
-            <div class="card-header">
-                <h2 align="center" style="color: black"><u>Registration Form</u></h2>
+            <div class="card-header" style="background-color: #4285f4;">
+                <h2 align="center" style="color: black;"><u>Registration Form</u></h2>
             </div>
             <div class="card-body" align="center">
                 <form action="jsp/reg.jsp" method="post">
@@ -134,7 +134,7 @@
 
                     <div>
                         <button type="submit" class="button1 button4" style="width:100px;height:50px;">Request</button>
-                        <a href="booking.jsp"> <button type="reset" class="button2 button4" style="width:100px;height:50px;">Cancel</button>
+                        <a href="booking.jsp"> <button class="button2 button4" style="width:100px;height:50px;">Cancel</button>
                         </a>
                     </div>
 

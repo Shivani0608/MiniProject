@@ -8,7 +8,7 @@
 
 
 <div>
-    <table id="tab1" class="display" style="width:100%">
+    <table id="tab1" class="display cell-border" style="width:100%;">
         <thead>
         <tr>
             <th>Lab Name</th>
@@ -54,9 +54,6 @@
                 }
 
 
-                //out.print("</table>");
-
-
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -72,7 +69,6 @@
         $('#tab1').DataTable();
     });//mylabel
 
-    // alert("Here");
     function openLabDetails(e) {
         var lab_no = $(e).data("lab");
         $("#labs").load("jsp/labs.jsp?lab_name=" + lab_no);
@@ -81,8 +77,5 @@
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#labs").offset().top - 60
         }, 2000);
-
     }
-
-
 </script>
