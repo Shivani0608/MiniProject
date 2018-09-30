@@ -22,7 +22,7 @@
         ps.setString(1, lab_name);
         ResultSet rs = ps.executeQuery();
         //out.print("<div style='height:;'></div>");
-        out.print("<div class='container-fluid' id='temp_lab' style='box-shadow: 20px 20px 20px #888888; width:820px; height:auto'>");
+        out.print("<div class='container-fluid' id='temp_lab' style='box-shadow: 20px 20px 20px #888888; width:820px; height:auto;background: url(img/logo.png) no-repeat left center;'>");
 
         while (rs.next()) {
 %>

@@ -41,13 +41,13 @@
                     out.print("<tr>");
                     out.print("<td>");
                     out.print("<button class='mybtn' onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_no") + "'>");
-                    out.print(rs.getString(2));
+                    out.print("<h4>"+rs.getString(2)+"</h4>");
                     out.print("</td>");
                     out.print("<td>");
-                    out.print(rs.getString("from_time"));
+                    out.print("<h4>"+rs.getString("from_time")+"</h4>");
                     out.print("</td>");
                     out.print("<td>");
-                    out.print(rs.getString("to_time"));
+                    out.print("<h4>"+rs.getString("to_time")+"</h4>");
                     out.print("</td>");
                     out.print("</tr>");
 

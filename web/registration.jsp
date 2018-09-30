@@ -38,14 +38,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
-<div class="container-fluid" padding-left="100px">
-    <body style="background-repeat: no-repeat;background-size: cover">
+<nav class="navbar navbar-expand-lg navbar-dark primary-color fixed-top">
 
-    <div class="card-wrapper" style="width:550px; margin-left: 30%; margin-top:20px; margin-bottom: 20px;">
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#"><i class="fa fa-institution" aria-hidden="true"></i>&nbsp;INFRASTRUCTURE ALLOCATION </a>
 
-        <div class="card-fat" style="background-color:white">
-            <div class="card-header" style="background-color: #4285f4;">
-                <h2 align="center" style="color: black;"><u>Registration Form</u></h2>
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav"
+
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="logout.jsp" data-toggle="tooltip" title="LogOut"><i class="fa fa-sign-out fa-rotate-180 fa-lg" aria-hidden="true"></i></a>
+            </li>
+            <!-- Dropdown -->
+        </ul>
+        <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+</nav>
+
+<div class="container-fluid" padding-left="100px" style="margin-top: 90px;">
+    <body style="background-color: #e0e3e7">
+
+    <div class="card-wrapper" style="width:550px; margin-left: 30%; margin-top:20px; margin-bottom: 20px; ">
+
+        <div class="card-fat" style="background-color:white;">
+            <div class="card-header" style="background-color: #199bbd;" >
+                <h2 align="center" style="color: black;">Registration Form</h2>
             </div>
             <div class="card-body" align="center">
                 <form action="jsp/reg.jsp" method="post">
@@ -145,3 +173,13 @@
     </div>
     </body>
 </html>
+
+<%
+    String sd = request.getParameter("date");
+    out.print(sd);
+    session.setAttribute("sd", sd);
+
+String std=(String) session.getAttribute("sd");
+out.print(std);
+
+%>

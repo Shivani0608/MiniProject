@@ -8,11 +8,12 @@
 
 <%
 
-        Connection con = myDB.getCon();
+        Connection con= myDB.getCon();
+
 
     String ename=request.getParameter("eventname");
     int rn= Integer.parseInt(request.getParameter("studrn"));
-
+    /*out.print(rn);*/
     String sname=request.getParameter("studname");
 
     String mail=request.getParameter("studmail");
@@ -31,11 +32,14 @@
 
     String mis_id = (String) session.getAttribute("user_name");
 
-    try {
+
+    try
+    {
+
 
         PreparedStatement stmt = con.prepareStatement("insert into event_description values (?,?,?,?,?,?,?,?,?,?,?,?)");
 
-    
+
         stmt.setString(1,mis_id);
         stmt.setString(2, ename);
         stmt.setInt(3, rn);
@@ -49,8 +53,8 @@
         stmt.setString(11, ed);
         stmt.setString(12, et);
 
-        stmt.executeUpdate();
 
+        stmt.executeUpdate();
     }catch (Exception e){
         e.printStackTrace();
     }
