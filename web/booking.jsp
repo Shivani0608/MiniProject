@@ -141,7 +141,7 @@
         <div class="col">
             <center>
                 <div class="main" id="main">
-                    <form id="myForm" method="get" action="registration.jsp">
+                    <form id="myForm">
                         <div class="mt-1">
                             <p>Search Labs by Date:</p>
                             <input type="date" name="date" id="date" required>

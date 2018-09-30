@@ -36,7 +36,7 @@
             <img src="img/logo.png" width="150px"><br><p class="h4 mb-4">Sign in</p>
 
             <!-- Email -->
-            <input type="text" id="txt_id" name="txt_id" class="form-control mb-4" placeholder="E-mail">
+            <input type="text" id="txt_id" name="txt_id" class="form-control mb-4" placeholder="MIS ID">
 
             <!-- Password -->
             <input type="password" id="txt_pass" name="txt_pass" class="form-control mb-4" placeholder="Password">
