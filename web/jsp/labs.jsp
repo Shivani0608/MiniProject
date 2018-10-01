@@ -91,9 +91,6 @@
     }
 
 %>
-<div style="width: 1000px;margin-left: 630px;margin-top: 50px;">
-    <a href="registration.jsp"><button class="button1 button4" style="width:100px;height:50px;">Book&nbsp;&nbsp;<i class="fa fa-unlock-alt" aria-hidden="true"></i></button><%--<button  style="width: 200px;height: 100px;">Book</button>--%></a>
-</div>
 
 </body>
 </html>
