@@ -1,4 +1,3 @@
-<%@ page import="java.util.Date" %>
 <!DOCTYPE html>
 <%
     if (request.getSession().getAttribute("user_name") == null) {

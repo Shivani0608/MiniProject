@@ -65,9 +65,6 @@
 </div>
 
 <script>
-    $(document).ready(function () {
-        $('#tab1').DataTable();
-    });//mylabel
 
     function openLabDetails(e) {
         var lab_no = $(e).data("lab");

@@ -20,29 +20,40 @@ public class auth_user extends HttpServlet {
 
         String mis_id = req.getParameter("txt_id");
         String pass = req.getParameter("txt_pass");
-        PreparedStatement preparedStatement;
-        myDB db = new myDB();
-        Connection con = db.getCon();
+        String type = req.getParameter("type");
+        int flag = 0;
+
+        PreparedStatement preparedStatement = null;
+        // myDB db = new myDB();
+        Connection con = myDB.getCon();
         if (con != null) {
             try {
                 HttpSession session = req.getSession();
+                if ("teacher".equals(type)) {
+                    preparedStatement = con.prepareStatement("select mis_id,password from teacher_login where mis_id=? and password=?");
 
-                preparedStatement = con.prepareStatement("select mis_id,password from teacher_login where mis_id=? and password=?");
+                } else if ("admin".equals(type)) {
+                    flag = 1;
+                    preparedStatement = con.prepareStatement("select id,pass from admin_login where id=? and pass=?");
+                }
+
                 preparedStatement.setString(1, mis_id);
                 preparedStatement.setString(2, pass);
+
                 ResultSet resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
                     session.setAttribute("user_name", mis_id);
-                    resp.sendRedirect("/booking.jsp");
+                    if (flag == 0)
+                        resp.sendRedirect("/booking.jsp");
+                    else
+                        resp.sendRedirect("/admin.jsp");
                 } else {
-                    session.setAttribute("errorMessage","Invalid");
+                    session.setAttribute("errorMessage", "Invalid");
                     session.setAttribute("user_name", null);
-                    req.getRequestDispatcher("/index.jsp").forward(req,resp);
+                    req.getRequestDispatcher("/index.jsp").forward(req, resp);
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
-
-
             }
 
         } else {
