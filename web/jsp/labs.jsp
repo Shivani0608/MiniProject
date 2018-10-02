@@ -81,7 +81,9 @@
         <input type="text" value="<%=rs.getString("email")%>" readonly>
     </div>
 </div>
-
+<div>
+    <center><button class="btn btn-success" href="registration.jsp">Book&nbsp;<i class="fa fa-lock"></i></button></center>
+</div>
     <%--<input class="myinput col-sm-6" type="text" value="<%=rs.getString("lab_no")%>" readonly><br>--%>
 <%
             out.print("</div>");
