@@ -40,7 +40,7 @@
 
                     out.print("<tr>");
                     out.print("<td>");
-                    out.print("<button class='mybtn' onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_no") + "'>");
+                    out.print("<button class='mybtn' onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_id") + "'>");
                     out.print("<h4>"+rs.getString(2)+"</h4>");
                     out.print("</td>");
                     out.print("<td>");

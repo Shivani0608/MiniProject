@@ -18,7 +18,7 @@
     Connection con = null;
     try {
         con = myDB.getCon();
-        PreparedStatement ps = con.prepareStatement("select * from lab_details inner join assistant_info on lab_details.assistant_id = assistant_info.assistant_id  inner join dept_info di on lab_details.dept_id = di.dept_id   where lab_no= ?");
+        PreparedStatement ps = con.prepareStatement("select * from lab_time inner join lab_details detail on lab_time.lab_no = detail.lab_no inner join assistant_info on detail.assistant_id = assistant_info.assistant_id  inner join dept_info di on detail.dept_id = di.dept_id   where lab_id= ?");
         ps.setString(1, lab_name);
         ResultSet rs = ps.executeQuery();
         //out.print("<div style='height:;'></div>");
