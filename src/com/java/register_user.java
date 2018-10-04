@@ -15,8 +15,8 @@ public class register_user extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Connection con;
-        myDB db = new myDB();
-        con = db.getCon();
+       // myDB db = new myDB();
+        con = myDB.getCon();
         String mis_id = request.getParameter("mis_id");
         String fname = request.getParameter("fname");
         String mname = request.getParameter("mname");

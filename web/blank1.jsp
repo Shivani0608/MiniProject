@@ -60,10 +60,10 @@
         <i class="fas fa-bars"></i>
     </button>
 
-    <a class="navbar-brand mr-1" href="admin.jsp">Welcome !</a>
+    <a class="navbar-brand mr-1" href="admin.jsp">Welcome <%=name%> !</a>
+    <a class="ml-auto" href="logout.jsp"><i class="fas fa-sign-out-alt"></i></a>
 
     <!-- Navbar -->
-    </ul>
 
 </nav>
 

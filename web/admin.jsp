@@ -33,27 +33,34 @@
 
 <%
     // try {
+    String user= (String) session.getAttribute("user_name");
     Connection con = myDB.getCon();
+    PreparedStatement stmt1=con.prepareStatement("select * from assistant_info where assistant_id=?");
     PreparedStatement stmt = con.prepareStatement("select count(*) as event_count from event_description where flag=0");
-
+    stmt1.setString(1,user);
+    ResultSet rs1=stmt1.executeQuery();
     ResultSet rs = stmt.executeQuery();
     String event_count = null;
     while (rs.next()) {
         event_count = rs.getString(1);
     }
-
+    String name=null;
+    while(rs1.next())
+    {
+        name=rs1.getString("assistant_name");
+    }
 %>
 
 <body id="page-top">
 
 
 <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
-
-    <a class="navbar-brand mr-1" href="admin.jsp">Admin Panel</a>
-
     <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
         <i class="fas fa-bars"></i>
     </button>
+    <a class="navbar-brand mr-1" href="admin.jsp">Welcome <%=name%> !</a>
+
+
 
     <a class="ml-auto" href="logout.jsp"><i class="fas fa-sign-out-alt"></i></a>
 

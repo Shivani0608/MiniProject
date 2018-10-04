@@ -96,37 +96,37 @@
     <div class="mySlides w3-display-container w3-center">
         <img src="/img/pic3.jpg" style="width:100%;height: 450px;margin-right:80px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <h3>Los Angeles</h3>
-            <p><b>We had the best time playing at Venice Beach!</b></p>
+            <h3><%--Los Angeles--%></h3>
+            <p><b><%--We had the best time playing at Venice Beach!--%></b></p>
         </div>
     </div>
     <div class="mySlides w3-display-container w3-center">
         <img src="img/pic5.JPG" style="width:100%;height: 450px;margin-right:80px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <h3>Chicago</h3>
-            <p><b>Thank you, Chicago - A night we won't forget.</b></p>
+            <h3><%--Chicago--%></h3>
+            <p><b><%--Thank you, Chicago - A night we won't forget.--%></b></p>
         </div>
     </div>
     <div class="mySlides w3-display-container w3-center">
         <img src="img/pic4.jpeg" style="width:100%;height: 450px;margin-right:80px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <h3>New York</h3>
-            <p><b>The atmosphere in New York is lorem ipsum.</b></p>
+            <h3><%--New York--%></h3>
+            <p><b><%--The atmosphere in New York is lorem ipsum.--%></b></p>
         </div>
     </div>
     <div class="mySlides w3-display-container w3-center">
         <img src="img/pic7.jpg" style="width:100%;height: 450px;margin-right:80px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <h3>Chicago</h3>
-            <p><b>Thank you, Chicago - A night we won't forget.</b></p>
+            <h3><%--Chicago--%></h3>
+            <p><b><%--Thank you, Chicago - A night we won't forget.--%></b></p>
         </div>
     </div>
 
     <div class="mySlides w3-display-container w3-center">
         <img src="img/pic1.JPG" style="width:100%;height: 450px;margin-right:80px;">
         <div class="w3-display-bottommiddle w3-container w3-text-white w3-padding-32 w3-hide-small">
-            <h3>Chicago</h3>
-            <p><b>Thank you, Chicago - A night we won't forget.</b></p>
+            <h3><%--Chicago--%></h3>
+            <p><b><%--Thank you, Chicago - A night we won't forget.--%></b></p>
         </div>
     </div>
 

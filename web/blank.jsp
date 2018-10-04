@@ -59,182 +59,178 @@
             to_time = rs.getString("to_time");
             day = rs.getString("day");
 
-            // out.print(lab_name);
         }
-
 %>
-
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
+    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle">
         <i class="fas fa-bars"></i>
     </button>
 
     <a class="navbar-brand mr-1" href="admin.jsp">Welcome <%=user_name%> !</a>
+    <a class="ml-auto" href="logout.jsp"><i class="fas fa-sign-out-alt"></i></a>
 
-    <!-- Navbar -->
-    </ul>
+    </nav>
 
-</nav>
+    <div id="wrapper">
 
-<div id="wrapper">
+        <!-- Sidebar -->
+        <ul class="sidebar navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="admin.jsp">
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="blank.jsp">
+                    <i class="fas fa-fw fa-edit"></i>
+                    <span>Update Lab Details</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="blank1.jsp">
+                    <i class="fas fa-fw fa-user-edit"></i>
+                    <span>Update User Details</span></a>
+            </li>
+        </ul>
 
-    <!-- Sidebar -->
-    <ul class="sidebar navbar-nav">
-        <li class="nav-item">
-            <a class="nav-link" href="admin.jsp">
-                <i class="fas fa-fw fa-tachometer-alt"></i>
-                <span>Dashboard</span>
-            </a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="blank.jsp">
-                <i class="fas fa-fw fa-edit"></i>
-                <span>Update Lab Details</span></a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="blank1.jsp">
-                <i class="fas fa-fw fa-user-edit"></i>
-                <span>Update User Details</span></a>
-        </li>
-    </ul>
+        <div id="content-wrapper">
 
-    <div id="content-wrapper">
+            <div class="container-fluid">
 
-        <div class="container-fluid">
+                <!-- Breadcrumbs-->
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                        <a href="admin.jsp">Dashboard</a>
+                    </li>
+                    <li class="breadcrumb-item active">Update Lab Details</li>
+                </ol>
 
-            <!-- Breadcrumbs-->
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item">
-                    <a href="admin.jsp">Dashboard</a>
-                </li>
-                <li class="breadcrumb-item active">Update Lab Details</li>
-            </ol>
+                <!-- Page Content -->
+                <h1>Update Lab Details</h1>
+                <hr>
+                <form action="jsp/update_details.jsp" method="post">
+                    <div class="card">
+                        <div class="card-header">
+                            Update the Lab
+                        </div>
+                        <div class="card-body">
+                            <div class="row mb-2">
+                                <div class="col-4">
+                                    <label>Lab Name:</label>&nbsp;<input type="text" id="lab_name" name="lab_name"
+                                                                         placeholder="Lab Name"
+                                                                         value="<%=lab_name%>"
+                                                                         readonly>
+                                </div>
+                                <div class="col-2">
 
-            <!-- Page Content -->
-            <h1>Update Lab Details</h1>
-            <hr>
-            <form action="jsp/update_details.jsp" method="post">
-                <div class="card">
-                    <div class="card-header">
-                        Update the Lab
-                    </div>
-                    <div class="card-body">
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <label>Lab Name:</label>&nbsp;<input type="text" id="lab_name" name="lab_name"
-                                                                     placeholder="Lab Name"
-                                                                     value="<%=lab_name%>"
-                                                                     readonly>
+                                </div>
+                                <div class="col-4">
+                                    <label>Time From:</label>&nbsp;<input type="time" id="lab_from_time"
+                                                                          name="lab_from_time"
+                                                                          value="<%=from_time%>"
+                                                                          readonly>
+                                </div>
+
                             </div>
-                            <div class="col-2">
+                            <div class="row mb-2">
+                                <div class="col-4">
+                                    <label>Capacity:</label>&nbsp;<input type="text" id="lab_capacity"
+                                                                         name="lab_capacity"
+                                                                         placeholder="Capacity"
+                                                                         value="<%=capacity%>"
+                                                                         readonly>
+                                </div>
+                                <div class="col-2"></div>
+                                <div class="col-4">
+                                    <label>Time To:</label>&nbsp;<input type="time" id="lab_to_time" name="lab_to_time"
+                                                                        readonly
+                                                                        value="<%=to_time%>">
+                                </div>
+                            </div>
+
+                            <div class="row mb-2">
+                                <div class="col-4">
+                                    <label>From:</label><input type="text" id="currDay" value="<%=day%>" readonly>
+
+                                </div>
+
+                                <div class="col-4">
+                                    <label>To : </label>
+                                    <select id="lab_day" name="lab_day" readonly="">
+                                        <option>Monday</option>
+                                        <option>Tuesday</option>
+                                        <option>Wednesday</option>
+                                        <option>Thrusday</option>
+                                        <option>Friday</option>
+                                        <option>Saturday</option>
+                                        <option>Sunday</option>
+                                    </select>
+                                </div>
+
 
                             </div>
-                            <div class="col-4">
-                                <label>Time From:</label>&nbsp;<input type="time" id="lab_from_time"
-                                                                      name="lab_from_time"
-                                                                      value="<%=from_time%>"
-                                                                      readonly>
-                            </div>
+                        </div>
+                        <div class="card-header">
+
+                            <button class="btn btn-primary fa fa-edit" id="edit" type="button" onclick="enable()">
+                                &nbsp;Edit
+                            </button>
+                            <button class="btn btn-success fa fa-save" type="submit">&nbsp;Save</button>
 
                         </div>
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <label>Capacity:</label>&nbsp;<input type="text" id="lab_capacity" name="lab_capacity"
-                                                                     placeholder="Capacity"
-                                                                     value="<%=capacity%>"
-                                                                     readonly>
-                            </div>
-                            <div class="col-2"></div>
-                            <div class="col-4">
-                                <label>Time To:</label>&nbsp;<input type="time" id="lab_to_time" name="lab_to_time"
-                                                                    readonly
-                                                                    value="<%=to_time%>">
-                            </div>
-                        </div>
-
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <label>From:</label><input type="text" id="currDay" value="<%=day%>"readonly >
-
-                            </div>
-
-                            <div class="col-4">
-                                <label>To : </label>
-                                <select id="lab_day" name="lab_day" readonly="">
-                                    <option>Monday</option>
-                                    <option>Tuesday</option>
-                                    <option>Wednesday</option>
-                                    <option>Thrusday</option>
-                                    <option>Friday</option>
-                                    <option>Saturday</option>
-                                    <option>Sunday</option>
-                                </select>
-                            </div>
-
-
-                        </div>
                     </div>
-                    <div class="card-header">
-
-                        <button class="btn btn-primary fa fa-edit" id="edit" type="button" onclick="enable()">
-                            &nbsp;Edit
-                        </button>
-                        <button class="btn btn-success fa fa-save" type="submit">&nbsp;Save</button>
-
-                    </div>
-                </div>
-            </form>
+                </form>
+            </div>
+            <!-- /.container-fluid -->
         </div>
-        <!-- /.container-fluid -->
+        <!-- /.content-wrapper -->
+
     </div>
-    <!-- /.content-wrapper -->
+    <!-- /#wrapper -->
 
-</div>
-<!-- /#wrapper -->
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-<!-- Core plugin JavaScript-->
-<script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="js/sb-admin.min.js"></script>
-<%
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+        <%
     } catch (Exception e) {
         e.printStackTrace();
     }
 %>
-<script>
-    var i = 0;
-    $('#edit').click(function () {
-        if (i == 0) {
-            $('#lab_from_time').prop('readonly', false);
-            $('#lab_to_time').prop('readonly', false);
-            $('#lab_capacity').prop('readonly', false);
-            $('#lab_mobile').prop('readonly', false);
-            $('#lab_day').prop('readonly', false);
-            i++;
-        } else {
-            $('#lab_from_time').prop('readonly', true);
-            $('#lab_to_time').prop('readonly', true);
-            $('#lab_capacity').prop('readonly', true);
-            $('#lab_mobile').prop('readonly', true);
-            $('#lab_day').prop('readonly', true);
-            i--;
+    <script>
+        var i = 0;
+        $('#edit').click(function () {
+            if (i == 0) {
+                $('#lab_from_time').prop('readonly', false);
+                $('#lab_to_time').prop('readonly', false);
+                $('#lab_capacity').prop('readonly', false);
+                $('#lab_mobile').prop('readonly', false);
+                $('#lab_day').prop('readonly', false);
+                i++;
+            } else {
+                $('#lab_from_time').prop('readonly', true);
+                $('#lab_to_time').prop('readonly', true);
+                $('#lab_capacity').prop('readonly', true);
+                $('#lab_mobile').prop('readonly', true);
+                $('#lab_day').prop('readonly', true);
+                i--;
 
-        }
-    });
-</script>
+            }
+        });
+    </script>
 
 </body>
 
