@@ -33,22 +33,21 @@
 
 <%
     // try {
-    String user= (String) session.getAttribute("user_name");
+    String user = (String) session.getAttribute("user_name");
     Connection con = myDB.getCon();
-    PreparedStatement stmt1=con.prepareStatement("select * from assistant_info where assistant_id=?");
+    PreparedStatement stmt1 = con.prepareStatement("select * from assistant_info where assistant_id=?");
     PreparedStatement stmt = con.prepareStatement("select count(*) as event_count from event_description where flag=0 and assistant_id=?");
-    stmt1.setString(1,user);
-    stmt.setString(1,user);
-    ResultSet rs1=stmt1.executeQuery();
+    stmt1.setString(1, user);
+    stmt.setString(1, user);
+    ResultSet rs1 = stmt1.executeQuery();
     ResultSet rs = stmt.executeQuery();
     String event_count = null;
     while (rs.next()) {
         event_count = rs.getString(1);
     }
-    String name=null;
-    while(rs1.next())
-    {
-        name=rs1.getString("assistant_name");
+    String name = null;
+    while (rs1.next()) {
+        name = rs1.getString("assistant_name");
     }
 %>
 
@@ -60,7 +59,6 @@
         <i class="fas fa-bars"></i>
     </button>
     <a class="navbar-brand mr-1" href="admin.jsp">Welcome <%=name%> !</a>
-
 
 
     <a class="ml-auto" href="logout.jsp"><i class="fas fa-sign-out-alt"></i></a>
@@ -118,7 +116,8 @@
                             <div class="card-body-icon">
                                 <i class="fas fa-fw fa-comments"></i>
                             </div>
-                            <div class="mr-5"><%=event_count%> New Request(s) ! <i class="float-right fas fa-angle-right"></i></div>
+                            <div class="mr-5"><%=event_count%> New Request(s) ! <i
+                                    class="float-right fas fa-angle-right"></i></div>
                         </div>
                     </div>
                 </div>
@@ -128,7 +127,7 @@
                             <div class="card-body-icon">
                                 <i class="fas fa-fw fa-list"></i>
                             </div>
-                            <div  class="mr-5">History</div>
+                            <div class="mr-5">History</div>
                         </div>
                         <a onclick="toscroll()" class="card-footer text-white clearfix small z-1" href="#">
                             <i class="float-right fas fa-angle-right"></i>
@@ -167,7 +166,7 @@
                                     //Connection con = myDB.getCon();
                                     if (con != null) {
                                         PreparedStatement stmt2 = con.prepareStatement("select * from event_description where assistant_id=?");
-                                        stmt2.setString(1,user);
+                                        stmt2.setString(1, user);
                                         ResultSet rs2 = stmt2.executeQuery();
 
                                         while (rs2.next()) {
@@ -227,7 +226,7 @@
                                         //Connection con = myDB.getCon();
                                         if (con != null) {
                                             PreparedStatement stmt3 = con.prepareStatement("select * from event_description where assistant_id=?");
-                                            stmt3.setString(1,user);
+                                            stmt3.setString(1, user);
                                             ResultSet rs3 = stmt3.executeQuery();
 
                                             while (rs3.next()) {
@@ -247,12 +246,12 @@
                                                     if (rs3.getInt("flag") == 1) {
 
                                                         out.print("<td>");
-                                                        out.print("<span style='color:green;font-weight:bold;'>"+"Confirmed"+"</span>");
+                                                        out.print("<span style='color:green;font-weight:bold;'>" + "Confirmed" + "</span>");
                                                         out.print("</td>");
 
                                                     } else {
                                                         out.print("<td>");
-                                                        out.print("<span style='color:red;font-weight:bold;'>"+"Rejected"+"</span>");
+                                                        out.print("<span style='color:red;font-weight:bold;'>" + "Rejected" + "</span>");
                                                         out.print("</td>");
                                                     }
                                                     out.print("</tr>");
@@ -322,17 +321,11 @@
 <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
 <!-- Page level plugin JavaScript-->
-<script src="vendor/chart.js/Chart.min.js"></script>
 <script src="vendor/datatables/jquery.dataTables.js"></script>
 <script src="vendor/datatables/dataTables.bootstrap4.js"></script>
 
 <!-- Custom scripts for all pages-->
 <script src="js/sb-admin.min.js"></script>
-
-<!-- Demo scripts for this page-->
-<script src="js/demo/datatables-demo.js"></script>
-<script src="js/demo/chart-area-demo.js"></script>
-
 
 <script type="text/javascript">
     $(document).ready(function () {
@@ -355,7 +348,7 @@
 
     function toscroll(e) {
         $([document.documentElement, document.body]).animate({
-            scrollTop: $("#history").offset().top -60
+            scrollTop: $("#history").offset().top - 60
         }, 1000);
     }
 

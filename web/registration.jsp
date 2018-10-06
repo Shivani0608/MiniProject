@@ -98,8 +98,6 @@
                         </div>
 
 
-
-
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group" align="left">
@@ -117,8 +115,6 @@
                                 </div>
                             </div>
                         </div>
-
-
 
 
                         <div class="row">
@@ -191,7 +187,6 @@
                                       placeholder="Enter full description about the event (No of attendees,organizers etc)."
                                       name="descp"></textarea>
                         </div>
-
 
 
                         <div>

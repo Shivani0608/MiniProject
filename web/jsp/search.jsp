@@ -7,7 +7,7 @@
 <%@ page import="java.util.Date" %>
 
 <div>
-    <table id="tab1" class="display cell-border" style="width:100%;">
+    <table id="tab1" class="cell-border stripe hover row-border " style="width:100%;">
         <thead>
         <tr>
             <th>Lab Name</th>
@@ -36,12 +36,15 @@
                 PreparedStatement stmt = con.prepareStatement("select * from lab_time inner join" +
                         " lab_details on lab_time.lab_no = lab_details.lab_no " +
                         "where lab_time.avail_day = ?");
+                /*PreparedStatement stmt1=con.prepareStatement("select * from event_description")*/
                 stmt.setInt(1, day);
                 ResultSet rs = stmt.executeQuery();
 //                out.print("<form method='post' action='labs.jsp' >");
                 while (rs.next()) {
-
                     out.print("<tr>");
+                    out.print("<td style='width:100px;'>");
+                    out.print("<img src='/img/pic3.jpg' style='width:95px;height:70px;'>");
+                    out.print("</td>");
                     out.print("<td>");
                     out.print("<button class='mybtn' onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_id") + "'>");
                     out.print("<h4>" + rs.getString(2) + "</h4>");
@@ -65,6 +68,14 @@
 
 
 </div>
+<!-- Page level plugin JavaScript-->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#tab1').DataTable();
+    });
+
+</script>
 
 <script>
 

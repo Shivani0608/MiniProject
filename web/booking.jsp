@@ -80,9 +80,14 @@
         <!-- Links -->
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
+                <a class="nav-link" href="jsp/user_book_history.jsp" data-toggle="tooltip" title="History"><i
+                        class="fa fa-history fa-lg" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="logout.jsp" data-toggle="tooltip" title="LogOut"><i
                         class="fa fa-sign-out fa-rotate-180 fa-lg" aria-hidden="true"></i></a>
             </li>
+
             <!-- Dropdown -->
         </ul>
         <!-- Links -->
@@ -158,7 +163,7 @@
     <div class="row">
         <%--<div class="col-sm-4">--%>
         <div class="container-fluid" id="lab_name"
-             style="margin-top: 50px;margin-bottom: 50px; width: 95%;background-color: #ededf8;">
+             style="margin-top: 50px;margin-bottom: 50px; width: 95%; ">
 
         </div>
         <%--</div>--%>
