@@ -86,13 +86,42 @@
                                     <input type="text" id="lab_name" name="lab_name"
                                            value="<%=request.getParameter("lb")%>"
                                            style="width:150px;" readonly>
-                                    <label>Selected Date:</label>
-                                    <input type="text" id="s_date" name="lab_name"
-                                           value="<%=dt%>"
-                                           style="width:150px;" readonly>
                                 </div>
                             </div>
                             <div class="col-md-2"></div>
+                            <div class="col-md-4">
+                                <div class="form-group" align="left">
+                                    <label>Start Date</label>
+                                    <input type="date" value="<%=dt%>" name="start_dt" style="width: 150px;" readonly>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group" align="left">
+                                    <label> From</label><br>
+                                    <input type="time" name="start_time" style="width: 150px;"
+                                           value="<%=request.getParameter("std")%>" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-1"></div>
+                            <div class="col-md-4">
+                                <div class="form-group" align="left">
+                                    <label>To</label><br>
+                                    <input type="time" name="end_time" style="width: 150px;"
+                                           value="<%=request.getParameter("etd")%>" readonly><br>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="row">
                             <div class="col-md-7">
                                 <div class="form-group" align="left">
                                     <label for="eventname">Event Name</label><input type="text" class="form-control"
@@ -163,37 +192,6 @@
                                       name="descp"></textarea>
                         </div>
 
-                        <%--<%--%>
-                        <%--String time1= (String) session.getAttribute("from_time");--%>
-                        <%--out.print(time1);--%>
-                        <%--%>--%>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <div class="form-group" align="left">
-                                    <label>Start Date</label>
-                                    <input type="date" value="<%=dt%>" name="start_dt" style="width: 150px;">
-                                </div>
-                            </div>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-6">
-                                <div class="form-group" align="left">
-                                    <label>Time</label><br>
-                                    <input type="time" name="start_time" style="width: 150px;"
-                                           value="<%=request.getParameter("std")%>">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-4"></div>
-                            <div class="col-md-2"></div>
-                            <div class="col-md-6">
-                                <div class="form-group" align="left">
-                                    <label>Time</label><br>
-                                    <input type="time" name="end_time" style="width: 150px;"
-                                           value="<%=request.getParameter("etd")%>"><br>
-                                </div>
-                            </div>
-                        </div>
 
 
                         <div>

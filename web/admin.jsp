@@ -36,8 +36,9 @@
     String user= (String) session.getAttribute("user_name");
     Connection con = myDB.getCon();
     PreparedStatement stmt1=con.prepareStatement("select * from assistant_info where assistant_id=?");
-    PreparedStatement stmt = con.prepareStatement("select count(*) as event_count from event_description where flag=0");
+    PreparedStatement stmt = con.prepareStatement("select count(*) as event_count from event_description where flag=0 and assistant_id=?");
     stmt1.setString(1,user);
+    stmt.setString(1,user);
     ResultSet rs1=stmt1.executeQuery();
     ResultSet rs = stmt.executeQuery();
     String event_count = null;
@@ -165,25 +166,26 @@
                                 try {
                                     //Connection con = myDB.getCon();
                                     if (con != null) {
-                                        stmt = con.prepareStatement("select * from event_description");
-                                        rs = stmt.executeQuery();
+                                        PreparedStatement stmt2 = con.prepareStatement("select * from event_description where assistant_id=?");
+                                        stmt2.setString(1,user);
+                                        ResultSet rs2 = stmt2.executeQuery();
 
-                                        while (rs.next()) {
-                                            if (rs.getInt("flag") == 0) {
+                                        while (rs2.next()) {
+                                            if (rs2.getInt("flag") == 0) {
                                                 out.print("<tr>");
                                                 out.print("<td>");
-                                                out.print(rs.getString("event_name"));
+                                                out.print(rs2.getString("event_name"));
                                                 out.print("</td>");
                                                 out.print("<td>");
-                                                out.print(rs.getString("dept"));
+                                                out.print(rs2.getString("dept"));
                                                 out.print("</td>");
                                                 out.print("<td>");
-                                                out.print(rs.getString("description"));
+                                                out.print(rs2.getString("description"));
                                                 out.print("</td>");
                                                 out.print("<td>");
-                                                out.print("<button type='button' class=' fa fa-check btn btn-success' onclick='openEvent1(this)' data-eid1='" + rs.getString("event_id") + "' ></button> ");
+                                                out.print("<button type='button' class=' fa fa-check btn btn-success' onclick='openEvent1(this)' data-eid1='" + rs2.getString("event_id") + "' ></button> ");
                                                 out.println("&nbsp");
-                                                out.print("<button type='button' class=' fa fa-close btn btn-danger' onclick='openEvent2(this)' data-eid2='" + rs.getString("event_id") + "'>");
+                                                out.print("<button type='button' class=' fa fa-close btn btn-danger' onclick='openEvent2(this)' data-eid2='" + rs2.getString("event_id") + "'>");
 
                                                 out.print("</td>");
                                                 out.print("</tr>");
@@ -224,24 +226,25 @@
                                     try {
                                         //Connection con = myDB.getCon();
                                         if (con != null) {
-                                            stmt = con.prepareStatement("select * from event_description");
-                                            rs = stmt.executeQuery();
+                                            PreparedStatement stmt3 = con.prepareStatement("select * from event_description where assistant_id=?");
+                                            stmt3.setString(1,user);
+                                            ResultSet rs3 = stmt3.executeQuery();
 
-                                            while (rs.next()) {
-                                                if (rs.getInt("flag") != 0) {
+                                            while (rs3.next()) {
+                                                if (rs3.getInt("flag") != 0) {
 
                                                     out.print("<tr>");
                                                     out.print("<td>");
-                                                    out.print(rs.getString("event_name"));
+                                                    out.print(rs3.getString("event_name"));
                                                     out.print("</td>");
                                                     out.print("<td>");
-                                                    out.print(rs.getString("dept"));
+                                                    out.print(rs3.getString("dept"));
                                                     out.print("</td>");
                                                     out.print("<td>");
-                                                    out.print(rs.getString("description"));
+                                                    out.print(rs3.getString("description"));
                                                     out.print("</td>");
 
-                                                    if (rs.getInt("flag") == 1) {
+                                                    if (rs3.getInt("flag") == 1) {
 
                                                         out.print("<td>");
                                                         out.print("<span style='color:green;font-weight:bold;'>"+"Confirmed"+"</span>");
