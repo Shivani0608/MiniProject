@@ -10,6 +10,7 @@
     <table id="tab1" class="cell-border stripe hover row-border " style="width:100%;">
         <thead>
         <tr>
+            <th></th>
             <th>Lab Name</th>
             <th>From</th>
             <th>To</th>
