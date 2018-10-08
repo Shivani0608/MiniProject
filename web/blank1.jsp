@@ -1,7 +1,8 @@
-<%@ page import="java.sql.Connection" %>
 <%@ page import="com.java.myDB" %>
+<%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,25 +32,29 @@
 
 <body id="page-top">
 <%
-    Connection con= myDB.getCon();
+    try {
 
-    String user = (String) session.getAttribute("user_name");
+        Connection con = myDB.getCon();
+
+        String user = (String) session.getAttribute("user_name");
 
 
-    PreparedStatement stmt=con.prepareStatement("select * from assistant_info where assistant_id=?");
-    stmt.setString(1,user);
+        PreparedStatement stmt = con.prepareStatement("select * from assistant_info where assistant_id=?");
 
-    ResultSet rs=stmt.executeQuery();
-    String name=null;
-    String mob=null;
-    String email=null;
+        stmt.setString(1, user);
 
-    while(rs.next())
-    {
-        name=rs.getString("assistant_name");
-        mob=rs.getString("mob_no");
-        email=rs.getString("email");
-    }
+        ResultSet rs = stmt.executeQuery();
+        String name = null;
+        String mob = null;
+        String email = null;
+
+
+        while (rs.next()) {
+            name = rs.getString("assistant_name");
+            mob = rs.getString("mob_no");
+            email = rs.getString("email");
+        }
+
 
 %>
 
@@ -116,19 +121,23 @@
                             <div class="col-3">
 
 
-                                <label> Name :</label>&nbsp;<input type="text" id="nm" name="nm" value="<%=name%>" readonly>
+                                <label> Name :</label>&nbsp;<input type="text" id="nm" name="nm" value="<%=name%>"
+                                                                   readonly>
                             </div>
                             <div class="col-3">
-                                <label>Mobile No. :</label>&nbsp;<input type="text" id="mn" name="mn" value="<%=mob%>" readonly>
+                                <label>Mobile No. :</label>&nbsp;<input type="text" id="mn" name="mn" value="<%=mob%>"
+                                                                        readonly>
                             </div>
                             <div class="col-3">
-                                <label>E-Mail :</label>&nbsp;<input type="text" id="mail" name="mail" value="<%=email%>" readonly>
-                                </div>
-                        </div><br>
-                                <button class="btn btn-primary fa fa-edit" id="edit" type="button" onclick="enable()">
-                                    &nbsp;Edit
-                                </button>
-                                <button class="btn btn-success fa fa-save" type="submit">&nbsp;Save</button>
+                                <label>E-Mail :</label>&nbsp;<input type="text" id="mail" name="mail" value="<%=email%>"
+                                                                    readonly>
+                            </div>
+                                                    </div>
+                        <br>
+                        <button class="btn btn-primary fa fa-edit" id="edit" type="button" onclick="enable()">
+                            &nbsp;Edit
+                        </button>
+                        <button class="btn btn-success fa fa-save" type="submit">&nbsp;Save</button>
 
 
                     </div>
@@ -174,7 +183,11 @@
         }
     });
 </script>
-
+<%
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+%>
 
 </body>
 

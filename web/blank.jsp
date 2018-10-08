@@ -2,6 +2,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.util.Base64" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -60,6 +61,11 @@
             day = rs.getString("day");
 
         }
+        PreparedStatement stmt2 = con.prepareStatement("select * from lab_details where assistant_id=?");
+        stmt2.setString(1, user);
+        ResultSet rs2 = stmt2.executeQuery();
+        rs2.next();
+
 %>
 
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
@@ -121,7 +127,7 @@
                                 <label>Lab Name:</label>&nbsp;<input type="text" id="lab_name" name="lab_name"
                                                                      placeholder="Lab Name"
                                                                      value="<%=lab_name%>"
-                                                                     >
+                            >
                             </div>
                             <div class="col-2">
 
@@ -167,6 +173,10 @@
                                     <option>Saturday</option>
                                     <option>Sunday</option>
                                 </select>
+                            </div>
+                            <div>
+                                <img src="data:image/png; base64,<%=Base64.getEncoder().encodeToString(rs2.getBytes(5))%>" width="100" height="150"
+                                     border="3"/>
                             </div>
 
                             <div class="col-2">
