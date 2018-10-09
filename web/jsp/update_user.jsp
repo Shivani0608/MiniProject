@@ -11,9 +11,7 @@
         stmt.setString(2, request.getParameter("mn"));
         stmt.setString(3, request.getParameter("mail"));
         stmt.setString(4, user);
-
         stmt.executeUpdate();
-
         response.sendRedirect("/blank1.jsp");
     }catch (Exception e)
     {

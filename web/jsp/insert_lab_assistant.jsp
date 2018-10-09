@@ -28,5 +28,7 @@
     stmt.setString(5, password);
     stmt.executeUpdate();
 
+    response.sendRedirect("/mainadmin.jsp");
+
 %>
 
