@@ -24,7 +24,7 @@ public class auth_user extends HttpServlet {
         int flag = 0;
 
         PreparedStatement preparedStatement = null;
-        // myDB db = new myDB();
+        /* myDB db = new myDB(); */
         Connection con = myDB.getCon();
         if (con != null) {
             try {
@@ -34,7 +34,7 @@ public class auth_user extends HttpServlet {
 
                 } else if ("admin".equals(type)) {
                     flag = 1;
-                    preparedStatement = con.prepareStatement("select id,pass from admin_login where id=? and pass=?");
+                    preparedStatement = con.prepareStatement("select assistant_id,password from assistant_info where assistant_id=? and password=?");
                 }
 
                 preparedStatement.setString(1, mis_id);
