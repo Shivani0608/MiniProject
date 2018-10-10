@@ -26,32 +26,45 @@ public class auth_user extends HttpServlet {
         PreparedStatement preparedStatement = null;
         /* myDB db = new myDB(); */
         Connection con = myDB.getCon();
+        ResultSet resultSet = null;
         if (con != null) {
             try {
                 HttpSession session = req.getSession();
+                if ("user".equals(type)) {
+                    //System.out.println("Helloooooooooooooooooooo");
+                    session.setAttribute("errorMessage", "type");
+                    resp.sendRedirect("/index.jsp");
+                }
+
+
                 if ("teacher".equals(type)) {
                     preparedStatement = con.prepareStatement("select mis_id,password from teacher_login where mis_id=? and password=?");
-
+                    session.setAttribute("flag", "0");
                 } else if ("admin".equals(type)) {
-                    flag = 1;
-                    preparedStatement = con.prepareStatement("select assistant_id,password from assistant_info where assistant_id=? and password=?");
+                    session.setAttribute("flag", "1");
+                    preparedStatement = con.prepareStatement("select id,password from admin_login where id=? and password=?");
                 }
 
-                preparedStatement.setString(1, mis_id);
-                preparedStatement.setString(2, pass);
+                if (preparedStatement != null) {
+                    preparedStatement.setString(1, mis_id);
+                    preparedStatement.setString(2, pass);
+                    resultSet = preparedStatement.executeQuery();
 
-                ResultSet resultSet = preparedStatement.executeQuery();
-                if (resultSet.next()) {
-                    session.setAttribute("user_name", mis_id);
-                    if (flag == 0)
-                        resp.sendRedirect("/booking.jsp");
-                    else
-                        resp.sendRedirect("/admin.jsp");
-                } else {
-                    session.setAttribute("errorMessage", "Invalid");
-                    session.setAttribute("user_name", null);
-                    req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                    if (resultSet.next()) {
+                        String ch = (String) session.getAttribute("flag");
+                        session.setAttribute("user_name", mis_id);
+                        if ( "0".equals(ch)) {
+                            resp.sendRedirect("/booking.jsp");
+                        } else
+                            resp.sendRedirect("/admin.jsp");
+                    } else {
+                        session.setAttribute("errorMessage", "Invalid");
+                        session.setAttribute("user_name", null);
+                        req.getRequestDispatcher("/index.jsp").forward(req, resp);
+                    }
+
                 }
+
             } catch (SQLException e) {
                 e.printStackTrace();
             }

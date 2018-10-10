@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-    //                    <img src="data:image/png;base64,<%=Base64.getEncoder().encodeToString(set.getBytes(3))%>" class="b"/>
+    //              <img src="data:image/png;base64,<%=Base64.getEncoder().encodeToString(set.getBytes(3))%>" class="b"/>
 @WebServlet("/updateServlet")
 @MultipartConfig(maxFileSize = 16177215)
 public class UpdateDetails extends HttpServlet {

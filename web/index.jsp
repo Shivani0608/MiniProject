@@ -57,7 +57,7 @@
                     <%--list--%>
 
                     <select class="form-control mb-4" name="type">
-                        <option value="user">--Select User--</option>
+                        <option value="user">User</option>
                         <option value="teacher">Teacher</option>
                         <option value="admin">Admin</option>
                     </select>
@@ -66,7 +66,10 @@
                     <input type="submit" class="btn btn-info btn-block my-4" value="Sign In">
                     <div style="color:red">
                         <%
-                            if (session.getAttribute("errorMessage") != null)
+                            if(session.getAttribute("errorMessage")=="type"){
+                                out.print("<p>Select type of user!</p>");
+                            }
+                            if (session.getAttribute("errorMessage") != null && session.getAttribute("errorMessage") !="type")
                                 out.print("<p>Invalid Username or Password, Try Again!</p>");
                         %>
                     </div>

@@ -4,6 +4,7 @@
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
 <%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="java.util.Base64" %>
 <%@ page import="java.util.Date" %>
 
 <div>
@@ -22,7 +23,7 @@
         <%
             String dt = request.getParameter("date");
             session.setAttribute("date", dt);
-            
+
 
             Date date;
             String date1;
@@ -44,7 +45,7 @@
                 while (rs.next()) {
                     out.print("<tr>");
                     out.print("<td style='width:100px;'>");
-                    out.print("<img src='/img/pic3.jpg' style='width:95px;height:70px;'>");
+                    out.print("<img src='data:image/png; base64," + Base64.getEncoder().encodeToString(rs.getBytes("photo")) + "' style='height:50px;width:50px'");
                     out.print("</td>");
                     out.print("<td>");
                     out.print("<button class='mybtn' onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_id") + "'>");

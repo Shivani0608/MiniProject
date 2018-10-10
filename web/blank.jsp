@@ -120,86 +120,6 @@
                     <div class="card-header">
                         Update the Lab
                     </div>
-                    <div class="card-body">
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <label>Lab Name:</label>&nbsp;<input type="text" id="lab_name" name="lab_name"
-                                                                     placeholder="Lab Name"
-                                                                     value="<%=lab_name%>"
-                            >
-                            </div>
-                            <div class="col-2">
-
-                            </div>
-                            <div class="col-4">
-                                <label>Time From:</label>&nbsp;<input type="time" id="lab_from_time"
-                                                                      name="lab_from_time"
-                                                                      value="<%=from_time%>"
-                                                                      readonly>
-                <!-- Page Content -->
-                <h1>Update Lab Details</h1>
-                <hr>
-                <form action="/updateServlet" method="post">
-                    <div class="card">
-                        <div class="card-header">
-                            Update the Lab
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-5">
-                                    <label style="width:200px;">Lab Name:</label>&nbsp;<input type="text" id="lab_name" name="lab_name" value="<%=lab_no%>" style="width:200px" readonly>
-                                </div>
-                                <div class="col-2"></div>
-                                <div class="col-5">
-                                    <label style="width:200px;">Time From:</label>&nbsp;<input type="time" id="lab_from_time" name="lab_from_time" value="<%=from_time%>" style="width:200px;" readonly>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <label>Capacity:</label>&nbsp;<input type="text" id="lab_capacity"
-                                                                     name="lab_capacity"
-                                                                     placeholder="Capacity"
-                                                                     value="<%=capacity%>"
-                                                                     readonly>
-                            </div>
-                            <div class="col-2"></div>
-                            <div class="col-4">
-                                <label>Time To:</label>&nbsp;<input type="time" id="lab_to_time" name="lab_to_time"
-                                                                    readonly
-                                                                    value="<%=to_time%>">
-                            </div>
-                            <div class="row">
-                            <input type="file" name="photo" id="photo" style="width:200px;">
-                            </div>
-                        </div>
-
-                        <div class="row mb-2">
-                            <div class="col-4">
-                                <label>From:</label><input type="text" id="currDay" value="<%=day%>" readonly>
-
-                            </div>
-
-                            <div class="col-4">
-                                <label>To : </label>
-                                <select id="lab_day" name="lab_day" readonly="">
-                                    <option>Monday</option>
-                                    <option>Tuesday</option>
-                                    <option>Wednesday</option>
-                                    <option>Thrusday</option>
-                                    <option>Friday</option>
-                                    <option>Saturday</option>
-                                    <option>Sunday</option>
-                                </select>
-                            </div>
-                            <div>
-                                <img src="data:image/png; base64,<%=Base64.getEncoder().encodeToString(rs2.getBytes(5))%>" width="100" height="150"
-                                     border="3"/>
-                            </div>
-
-                            <div class="col-2">
-                                <label>Upload Photo</label><input type="file" name="photo" id="photo">
                     <div class="col-xl-3 col-sm-6 mb-3">
                         <div class="card text-white bg-warning o-hidden h-100">
                             <div class="card-body">
@@ -208,71 +128,87 @@
                                 </div>
                                 <div class="mr-5">Insert New Records</div>
                             </div>
-                            <a onclick="toscroll()" class="card-footer text-white clearfix small z-1" href="#">
+                            <a onclick="toscroll()"
+                               class="card-footer text-white clearfix small z-1" href="#">
                                 <i class="float-right fas fa-angle-right"></i>
                             </a>
                         </div>
                     </div>
-                <form action ="jsp/updatelab_details.jsp" method="post">
-                    <div class="card" id="new_lab_details">
+                    <form action="jsp/updatelab_details.jsp" method="post">
+                        <div class="card" id="new_lab_details">
+                            <div class="card-header">
+                                Update the Lab
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label style="width:200px;">Lab
+                                            Name:</label>&nbsp;<input type="text"
+                                                                      id="lab_name1"
+                                                                      name="lab_name1"
+                                                                      value="<%=lab_name%>"
+                                                                      style="width:200px"
+                                                                      readonly>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label style="width:200px;">Time From:</label>&nbsp;<input
+                                            type="time" id="lab_from_time1"
+                                            name="lab_from_time1" style="width:200px;">
+                                    </div>
+                                    <div class="col-2"></div>
+                                    <div class="col-5">
+                                        <label style="width:200px;">Time
+                                            To:</label>&nbsp;<input type="time"
+                                                                    id="lab_to_time1"
+                                                                    name="lab_to_time1"
+                                                                    style="width:200px;">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-5">
+                                        <label style="width:200px;">Day:</label>
+                                        <select id="lab_day1" name="lab_day1"
+                                                style="width:200px;">
+                                            <option>Monday</option>
+                                            <option>Tuesday</option>
+                                            <option>Wednesday</option>
+                                            <option>Thrusday</option>
+                                            <option>Friday</option>
+                                            <option>Saturday</option>
+                                            <option>Sunday</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-2"></div>
+                                    <div class="col-5">
+                                        <label style="width:200px;">Day Number:</label>
+                                        <select id="avail_day1" name="avail_day1"
+                                                style="width:200px;">
+                                            <option>1</option>
+                                            <option>2</option>
+                                            <option>3</option>
+                                            <option>4</option>
+                                            <option>5</option>
+                                            <option>6</option>
+                                            <option>7</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
                         <div class="card-header">
-                            Update the Lab
-                        </div>
-                        <div class="card-body">
-                            <div class="row">
-                                <div class="col-5">
-                                    <label style="width:200px;">Lab Name:</label>&nbsp;<input type="text" id="lab_name1" name="lab_name1" value="<%=lab_no%>" style="width:200px" readonly>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-5">
-                                    <label style="width:200px;">Time From:</label>&nbsp;<input type="time" id="lab_from_time1" name="lab_from_time1" style="width:200px;">
-                                </div>
-                                <div class="col-2"></div>
-                                <div class="col-5">
-                                    <label style="width:200px;">Time To:</label>&nbsp;<input type="time" id="lab_to_time1" name="lab_to_time1" style="width:200px;">
-                                </div>
-                            </div>
 
-                            <div class="row">
-                                <div class="col-5">
-                                    <label style="width:200px;">Day:</label>
-                                    <select id="lab_day1" name="lab_day1" style="width:200px;">
-                                        <option>Monday</option>
-                                        <option>Tuesday</option>
-                                        <option>Wednesday</option>
-                                        <option>Thrusday</option>
-                                        <option>Friday</option>
-                                        <option>Saturday</option>
-                                        <option>Sunday</option>
-                                    </select>
-                                </div>
-                                <div class="col-2"></div>
-                                <div class="col-5">
-                                    <label style="width:200px;">Day Number:</label>
-                                    <select id="avail_day1" name="avail_day1" style="width:200px;">
-                                        <option>1</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
-                                        <option>6</option>
-                                        <option>7</option>
-                                    </select>
-                                </div>
-                            </div>
+                            <button class="btn btn-primary fa fa-edit" id="edit"
+                                    type="button" onclick="enable()">
+                                &nbsp;Edit
+                            </button>
+                            <button class="btn btn-success fa fa-save" type="submit">&nbsp;Save</button>
 
                         </div>
-
-                    </div>
-                    <div class="card-header">
-
-                        <button class="btn btn-primary fa fa-edit" id="edit" type="button" onclick="enable()">
-                            &nbsp;Edit
-                        </button>
-                        <button class="btn btn-success fa fa-save" type="submit">&nbsp;Save</button>
-
-                    </div>
                 </div>
             </form>
         </div>
@@ -321,16 +257,16 @@
             $('#lab_day').prop('readonly', true);
             i--;
 
-            }
-        });
-
-
-        function toscroll(e) {
-            $([document.documentElement, document.body]).animate({
-                scrollTop: $("#new_lab_details").offset().top - 60
-            }, 1000);
         }
-    </script>
+    });
+
+
+    function toscroll(e) {
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $("#new_lab_details").offset().top - 60
+        }, 1000);
+    }
+</script>
 
 </body>
 
