@@ -33,8 +33,6 @@
 <%
     try {
         String user = (String) session.getAttribute("user_name");
-
-
         Connection con = myDB.getCon();
         PreparedStatement stmt = con.prepareStatement("select * from lab_details inner join lab_time lt on lab_details.lab_no = lt.lab_no where lab_details.assistant_id = ?");
         PreparedStatement stmt1 = con.prepareStatement("select assistant_name from assistant_info where assistant_id=?");

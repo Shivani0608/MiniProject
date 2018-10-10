@@ -28,7 +28,48 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    <style>
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: #474e5d;
+            padding-top: 50px;
+        }
+        /* Modal Content/Box */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+        }
+        .close {
+            position: absolute;
+            right: 35px;
+            top: 15px;
+            font-size: 40px;
+            font-weight: bold;
+            color: #f1f1f1;
+        }
 
+        .close:hover,
+        .close:focus {
+            color: #f44336;
+            cursor: pointer;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+    </style>
 </head>
 
 <%
@@ -41,15 +82,17 @@
         <i class="fas fa-bars"></i>
     </button>
     <a class="navbar-brand mr-1" href="admin.jsp">Welcome Admin !</a>
+
     <a class="ml-auto" href="logout.jsp"><i class="fas fa-sign-out-alt"></i></a>
 </nav>
 
 
 <div align="center">
     <br><br><br>
-    <a class="ml-auto" href="#" onclick="toscroll()"><i class="fa fa-plus-square" aria-hidden="true"></i></a>
     <div class="card mb-3">
-        <div class="card-header">Details</div>
+        <div class="card-header">Details
+            <button class="btn" onclick="toscroll()"><a href="#"><i class="fa fa-plus-square" aria-hidden="true"></i></a></button>
+        </div>
         <div class="card-body">
             <div class="table-responsive">
                 <table id="tab1" class="table table-bordered" width="100%" cellspacing="0">
@@ -88,7 +131,7 @@
                                         out.print(rs.getString("password"));
                                         out.print("</td>");
                                         out.print("<td>");
-                                        out.print("<button type='button' class=' fa fa-edit btn btn-success' onclick='openEvent1(this)' data-eid1='" + rs.getString("assistant_id") + "' ></button> ");
+                                        out.print("<button type='button' class=' fa fa-edit btn btn-success' onclick='openEvent1(this)' data-eid1='" + rs.getString("assistant_id") + "'></button> ");
                                         out.println("&nbsp");
                                         out.print("<button type='button' class=' fa fa-trash btn btn-danger' onclick='openEvent2(this)' data-eid2='" + rs.getString("assistant_id") + "'></button>");
                                         out.print("</td>");
@@ -129,7 +172,7 @@
                 <label class="mylabel">Mobile Number</label>
             </div>
             <div class="col-md-6">
-                <input type="number" id="mob_no" maxlength="10" name="mob_no">
+                <input type="tel" id="mob_no" maxlength="10" name="mob_no">
             </div>
         </div>
         <div class="row mt-2">
@@ -149,14 +192,11 @@
             </div>
         </div><br>
         <div>
-            <center>
-                <button class="btn btn-success">Insert</button></center>
+            <center><button class="btn btn-success">Insert</button></center>
         </div>
     </form>
 </div>
-
-
-
+<br><br><br>
 <!-- /#wrapper -->
 
 <!-- Scroll to Top Button-->
@@ -184,6 +224,44 @@
     </div>
 </div>
 
+
+<div id="edit1" class="modal ml-auto mr-auto">
+    <span onclick="document.getElementById('edit1').style.display='none'" class="close" title="Close Modal">&times;</span>
+    <form class="modal-content" action="/jsp/edit_assistant.jsp" method="post" style="width: 600px; height:500px;">
+        <div class="container " align="center" >
+            <h1 align="center">Edit</h1>
+            <p>Edit Information of Lab_assistant</p>
+            <hr>
+            <label style="width: 200px;text-align: left;"><b>Assistant_id</b></label>
+            <input type="text" placeholder="Enter Assistant_id" name="assistant_id1" id="assistant_id1" value="" readonly required>
+            <br><br>
+            <label style="width: 200px;text-align: left;"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="assistant_name1" id="assistant_name1" required>
+            <br><br>
+            <label style="width: 200px; text-align: left;"><b>Mobile Number</b></label>
+            <input type="tel" placeholder="Enter Mobile Number" name="mob_no1" id="mob_no1" maxlength="10" required>
+            <br><br>
+            <label style="width: 200px;text-align: left;"><b>Mail ID</b></label>
+            <input type="text" placeholder="Enter Email" name="email1" id="email1" required>
+            <br><br>
+            <label style="width: 200px;text-align: left;"><b>Password</b></label>
+            <input type="password" placeholder="Enter password" name="password1" id="password1" required>
+            <br><br>
+            <div class="clearfix">
+                <button type="submit" class="btn btn-success fa fa-save">Save</button>
+                <button type="button" onclick="document.getElementById('edit1').style.display='none'" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
 <!-- Bootstrap core JavaScript-->
 <script src="vendor/jquery/jquery.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -204,9 +282,12 @@
     });
 
     function openEvent1(e) {
+
         var no1 = $(e).data("eid1");
+        document.getElementById('edit1').style.display='block'
+        document.getElementById("assistant_id1").value=no1;
         console.log("assistant_id" + no1);
-        window.location = "jsp/edit_assistant.jsp?assistant_id=" + no1;
+        //window.location = "jsp/edit_assistant.jsp?assistant_id=" + no1;
     }
 
     function openEvent2(e) {
@@ -221,6 +302,16 @@
         $([document.documentElement, document.body]).animate({
             scrollTop: $("#insert_assistant").offset().top - 60
         }, 1000);
+    }
+
+    // Get the modal
+    var modal = document.getElementById('edit1');
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 
 </script>

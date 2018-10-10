@@ -19,7 +19,6 @@
 
     try {
     Connection con = myDB.getCon();
-    int lab_id=57;
     String lab_no=request.getParameter("lab_name1");
     System.out.println(lab_no);
     String from_time =request.getParameter("lab_from_time1");
@@ -31,16 +30,15 @@
     int avail_day=Integer.parseInt(request.getParameter("avail_day1"));
     System.out.println(avail_day);
     int flag=0;
-    PreparedStatement stmt = con.prepareStatement("insert into lab_time values(?,?,?,?,?,?,?)");
-    stmt.setInt(1,lab_id);
-    stmt.setString (2, lab_no);
-    stmt.setString(3,from_time);
-    stmt.setString(4,to_time);
-    stmt.setString(5,day);
-    stmt.setInt(6,avail_day);
-    stmt.setInt(7,flag);
+    PreparedStatement stmt = con.prepareStatement("insert into lab_time values(NULL,?,?,?,?,?,?)");
+    stmt.setString (1, lab_no);
+    stmt.setString(2,from_time);
+    stmt.setString(3,to_time);
+    stmt.setString(4,day);
+    stmt.setInt(5,avail_day);
+    stmt.setInt(6,flag);
     stmt.executeUpdate();
-
+    response.sendRedirect("/blank.jsp");
 } catch (Exception e) {
 
         out.print(e);
