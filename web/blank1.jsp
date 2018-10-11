@@ -114,8 +114,9 @@
                     <div class="card-header">
                         <div class="row mb-1">
                             <div class="col-3">
-
-
+                                <label> MIS ID :</label>&nbsp;<input type="text" id="mis_id" name="mis_id" value="<%=user%>" readonly>
+                            </div>
+                            <div class="col-3">
                                 <label> Name :</label>&nbsp;<input type="text" id="nm" name="nm" value="<%=name%>" readonly>
                             </div>
                             <div class="col-3">
@@ -129,8 +130,6 @@
                                     &nbsp;Edit
                                 </button>
                                 <button class="btn btn-success fa fa-save" type="submit">&nbsp;Save</button>
-
-
                     </div>
                 </div>
             </form>

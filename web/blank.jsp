@@ -33,14 +33,18 @@
 <body id="page-top">
 <%
     try {
+
         String user = (String) session.getAttribute("user_name");
         Connection con = myDB.getCon();
         PreparedStatement stmt = con.prepareStatement("select * from lab_details inner join lab_time lt on lab_details.lab_no = lt.lab_no where lab_details.assistant_id = ?");
         PreparedStatement stmt1 = con.prepareStatement("select assistant_name from assistant_info where assistant_id=?");
+        PreparedStatement stmt2 = con.prepareStatement("select * from lab_details where assistant_id=?");
         stmt1.setString(1, user);
         stmt.setString(1, user);
+        stmt2.setString(1, user);
         ResultSet rs = stmt.executeQuery();
         ResultSet rs1 = stmt1.executeQuery();
+        ResultSet rs2 = stmt2.executeQuery();
         String lab_no = null;
         String capacity = null;
         String from_time = null;
@@ -52,12 +56,14 @@
         while (rs1.next())
             user_name = rs1.getString("assistant_name");
         while (rs.next()) {
-            lab_no = rs.getString("lab_no");
-            capacity = rs.getString("capacity");
             from_time = rs.getString("from_time");
             to_time = rs.getString("to_time");
             day = rs.getString("day");
 
+        }
+        while (rs2.next()) {
+            lab_no = rs2.getString("lab_no");
+            capacity = rs2.getString("capacity");
         }
 %>
 
@@ -104,6 +110,7 @@
                         <a href="admin.jsp">Dashboard</a>
                     </li>
                     <li class="breadcrumb-item active">Update Lab Details</li>
+                    <li><button class="btn" style="margin-left: 650px;" onclick="toscroll()">Insert New Records</button> </li>
                 </ol>
 
                 <!-- Page Content -->
@@ -151,6 +158,24 @@
                                         <option>Sunday</option>
                                     </select>
                                 </div>
+                                <%--<%--%>
+                                    <%--String day1=request.getParameter("lab_day");--%>
+                                    <%--System.out.println(day1);--%>
+                                    <%--PreparedStatement stmt3 = con.prepareStatement("select count(*) as day_count from lab_time where day=? and assistant_id=?");--%>
+                                    <%--stmt3.setString(1,day1);--%>
+                                    <%--stmt3.setString(2,user);--%>
+                                    <%--ResultSet rs3=stmt3.executeQuery();--%>
+                                    <%--int i=0;--%>
+                                    <%--while (rs3.next())--%>
+                                    <%--{--%>
+                                        <%--String from_time1 = rs.getString("from_time");--%>
+                                        <%--String to_time1 = rs.getString("to_time");--%>
+                                    <%--}--%>
+                                <%--%>--%>
+                                <%--<label style="width:200px;">Time From:</label>&nbsp;<input type="time" id="lab_from_time" name="lab_from_time" value="<%=from_time%>" style="width:200px;" readonly>--%>
+                                <%--<br>--%>
+                                <%--<label style="width:200px;">Time To:</label>&nbsp;<input type="time" id="lab_to_time" name="lab_to_time" value="<%=to_time%>" style="width:200px;" readonly>--%>
+
                             </div>
                             <div class="row">
                             <input type="file" name="photo" id="photo" style="width:200px;">
@@ -163,20 +188,6 @@
                     </div>
                 </form>
                 <br>
-
-                    <div class="col-xl-3 col-sm-6 mb-3">
-                        <div class="card text-white bg-warning o-hidden h-100">
-                            <div class="card-body">
-                                <div class="card-body-icon">
-                                    <i class="fas fa-fw fa-list"></i>
-                                </div>
-                                <div class="mr-5">Insert New Records</div>
-                            </div>
-                            <a onclick="toscroll()" class="card-footer text-white clearfix small z-1" href="#">
-                                <i class="float-right fas fa-angle-right"></i>
-                            </a>
-                        </div>
-                    </div>
                 <form action ="jsp/updatelab_details.jsp" method="post">
                     <div class="card" id="new_lab_details">
                         <div class="card-header">
@@ -190,11 +201,11 @@
                             </div>
                             <div class="row">
                                 <div class="col-5">
-                                    <label style="width:200px;">Time From:</label>&nbsp;<input type="time" id="lab_from_time1" name="lab_from_time1" style="width:200px;">
+                                    <label style="width:200px;">Time From:</label>&nbsp;<input type="time" id="lab_from_time1" name="lab_from_time1" style="width:200px;" required>
                                 </div>
                                 <div class="col-2"></div>
                                 <div class="col-5">
-                                    <label style="width:200px;">Time To:</label>&nbsp;<input type="time" id="lab_to_time1" name="lab_to_time1" style="width:200px;">
+                                    <label style="width:200px;">Time To:</label>&nbsp;<input type="time" id="lab_to_time1" name="lab_to_time1" style="width:200px;" required>
                                 </div>
                             </div>
 

@@ -10,6 +10,7 @@
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
 
 
 <%
@@ -26,9 +27,13 @@
     stmt.setString(3, mob_no);
     stmt.setString(4, email);
     stmt.setString(5, password);
+  try {
     stmt.executeUpdate();
+  } catch (SQLException e) {
+    e.printStackTrace();
+  }
+      response.sendRedirect("/mainadmin.jsp");
 
-    response.sendRedirect("/mainadmin.jsp");
 
 %>
 
