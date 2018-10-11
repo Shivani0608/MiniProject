@@ -13,7 +13,7 @@ public class myDB {
         try {
 
             Class.forName("com.mysql.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/minipro", "rashmi", "rashmi@123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/SL3", "shubham", "shubham");
         } catch (ClassNotFoundException ex) {
         //    Logger.getLogger(myDB.class.getName()).log(Level.SEVERE, null, ex);
           //  System.out.println(ex);

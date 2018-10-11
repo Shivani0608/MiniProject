@@ -335,14 +335,14 @@
     function openEvent1(e) {
         var event_no1 = $(e).data("eid1");
         console.log("Event_id" + event_no1);
-        window.location = "jsp/confirm.jsp?event_id=" + event_no1;
+        window.location = "/confirm?event_id=" + event_no1;
     }
 
     function openEvent2(e) {
 
         var event_no2 = $(e).data("eid2");
         console.log("Event_id" + event_no2);
-        window.location = "jsp/reject.jsp?event_id=" + event_no2;
+        window.location = "/reject?event_id=" + event_no2;
 
     }
 

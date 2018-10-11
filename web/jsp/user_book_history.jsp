@@ -29,6 +29,11 @@
     <!-- Custom styles for this template-->
     <link href="/css/sb-admin.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
 </head>
 
 <%
@@ -39,7 +44,44 @@
     ResultSet rs;
 %>
 
-<body id="page-top">
+<body class="w3-light-grey">
+
+<nav class="navbar navbar-expand-lg  fixed-top" style="background-color: #009688">
+
+    <!-- Navbar brand -->
+    <a class="navbar-brand" href="#"><i class="fa fa-institution" aria-hidden="true"></i>&nbsp;<strong>INFRASTRUCTURE
+        ALLOCATION
+    </strong></a>
+
+    <!-- Collapse button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+            aria-controls="basicExampleNav"
+
+            aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="basicExampleNav">
+
+        <!-- Links -->
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="/booking.jsp" data-toggle="tooltip" title="History"><i
+                        class="fa fa-history fa-lg" aria-hidden="true"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout.jsp" data-toggle="tooltip" title="LogOut"><i
+                        class="fa fa-sign-out fa-rotate-180 fa-lg" aria-hidden="true"></i></a>
+            </li>
+
+            <!-- Dropdown -->
+        </ul>
+        <!-- Links -->
+    </div>
+    <!-- Collapsible content -->
+</nav>
+
 <div class="card mb-3">
     <div class="card-header">
         <i class="fas fa-envelope fa-fw"></i>&nbsp;Requests

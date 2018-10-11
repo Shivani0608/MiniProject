@@ -1,7 +1,9 @@
-<%@ page import="java.sql.Connection" %>
 <%@ page import="com.java.myDB" %>
+<%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
 <%@ page import="java.sql.ResultSet" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="java.util.Base64" %>
 
 <!DOCTYPE html>
 
@@ -9,26 +11,27 @@
     if (request.getSession().getAttribute("user_name") == null) {
         response.sendRedirect("index.jsp");
     }
-    String user = (String) session.getAttribute("user_name");
-    Connection con = myDB.getCon();
-    PreparedStatement stmt = con.prepareStatement("select * from teacher_info where mis_id=?");
-    ResultSet rs;
-    stmt.setString(1, user);
-    rs = stmt.executeQuery();
-    String fuser = null;
-    String muser = null;
-    String luser = null;
-    String email_id = null;
-    String mob = null;
+    try {
+        String user = (String) session.getAttribute("user_name");
+        Connection con = myDB.getCon();
+        PreparedStatement stmt = con.prepareStatement("select * from teacher_info where mis_id=?");
+        ResultSet rs;
+        stmt.setString(1, user);
+        rs = stmt.executeQuery();
+        String fuser = null;
+        String muser = null;
+        String luser = null;
+        String email_id = null;
+        String mob = null;
 
-    while (rs.next()) {
-        fuser = rs.getString("fname");
-        muser = rs.getString("mname");
-        luser = rs.getString("lname");
-        email_id = rs.getString("email_id");
-        mob = rs.getString("mob_no");
+        if (rs.next()) {
+            fuser = rs.getString("fname");
+            muser = rs.getString("mname");
+            luser = rs.getString("lname");
+            email_id = rs.getString("email_id");
+            mob = rs.getString("mob_no");
 
-    }
+        }
 
 %>
 <html>
@@ -71,6 +74,8 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.18/datatables.min.js"></script>
+
+    <link rel="stylesheet" href="css/main.css">
 </head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -87,6 +92,7 @@
     }
 
 </style>
+
 <body class="w3-light-grey">
 
 <nav class="navbar navbar-expand-lg  fixed-top" style="background-color: #009688">
@@ -130,21 +136,30 @@
 <div class="w3-content w3-margin-top" style="max-width:1400px;margin-top: 20px">
 
     <!-- The Grid -->
-    <div class="w3-row-padding" style="margin-top: 70px" >
+    <div class="w3-row-padding" style="margin-top: 70px">
 
         <!-- Left Column -->
-        <div class="w3-third" style="height: max-content">
+        <div class="w3-third" style="height: 400px;width: 350px">
 
-            <div class="w3-white w3-text-grey w3-card-4" style="height:1044px">
+            <div class="w3-white w3-text-grey w3-card-4" style="height:auto; min-height: 600px">
                 <div class="w3-display-container">
-                    <center><img src="/img/pic1.JPG" class="w3-circle" style="margin-top: 10px" width="65%"
-                                 height="200px"></center>
+                    <center>
+                        <div>
+                            <img class="w3-circle mt-2"
+                                 src="data:image/png; base64,<%=Base64.getEncoder().encodeToString(rs.getBytes(8))%>"
+                                 width="150" height="180"
+                                 border="3"
+                            />
+                        </div>
+
+                    </center>
                 </div>
 
                 <div class="w3-container">
                     <p>
                     <h2><%=fuser%> <%=muser%> <%=luser%>
-                    </h2></p>
+                    </h2>
+                    </p>
 
                     <p><i class="fa fa-key fa-fw w3-margin-right w3-large w3-text-teal"></i><%=user%>
                     </p>
@@ -153,16 +168,45 @@
                     <p><i class="fa fa-phone fa-fw w3-margin-right w3-large w3-text-teal"></i><%=mob%>
                     </p>
                     <hr>
+                    <a href="jsp/user_book_history.jsp">
+                        <button class="w3-large w3-text-theme" style="border: none;background: transparent"><b><i
+                                class="fa fa-history fa-fw w3-margin-right w3-text-teal"></i>View History</b>
+                        </button>
+                    </a>
+                    <br>
+                    <br>
 
-                    <button class="w3-large" style="background: transparent;border: none"><b><i
+                <%--<a href="jsp/edit_teacher.jsp">--%>
+                    <button id="edit" class="w3-large" onclick="openForm()"
+                            style="text-align: left;width: 100%;background: transparent;border: none"><b><i
                             class="fa fa-pencil fa-fw w3-margin-right w3-text-teal"></i>Update Personal Details</b>
                     </button>
-                    <br>
-                    <br>
+                    <div class="form-popup" id="myForm1">
+                        <form action="/updateTeacher" method="post" class="form-container"
+                              enctype="multipart/form-data">
 
-                    <button class="w3-large w3-text-theme" style="border: none;background: transparent"><b><i
-                            class="fa fa-history fa-fw w3-margin-right w3-text-teal"></i>View History</b>
-                    </button>
+                            <label><b>Email</b></label>
+                            <input class="w3-input" type="text" placeholder="Enter Email" name="email"
+                                   value="<%=email_id%>">
+
+                            <label><b>Mobile Number</b></label>
+                            <input class="w3-input" type="text" placeholder="Enter Mobile" name="mobile"
+                                   value="<%=mob%>">
+
+
+                            <label><b>Password</b></label>
+                            <input class="w3-input" type="password" placeholder="Enter Password" name="pass"
+                                   value="<%=rs.getString("set_password")%>">
+
+                            <label><b>Upload Photo</b></label>
+                            <input type="file" name="pic">
+
+                            <button type="submit" class="btn btn-outline-primary">Update</button>
+                            <button type="button" class="btn cancel btn-outline-warning" onclick="closeForm()">Close
+                            </button>
+                        </form>
+                    </div>
+                    <%--</a>--%>
                     <br>
                     <br>
                 </div>
@@ -173,11 +217,11 @@
 
 
         <!-- Right Column -->
-        <div class="w3-twothird">
+        <div class="w3-twothird" style="width: 900px ">
 
             <!--images-->
             <div class="mySlides w3-display-container w3-center">
-                <img src="/img/pic3.jpg" style="width:100%;height: 350px;margin-right:80px;">
+                <img src="img/pic3.jpg" style="width:100%;height: 350px;margin-right:80px;">
             </div>
 
             <div class="mySlides w3-display-container w3-center">
@@ -200,46 +244,51 @@
             <!--End of images-->
 
             <div class="w3-container w3-card w3-white">
-                <h2 class="w3-text-grey w3-padding-16"><i
-                        class="fa fa-certificate fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Book a Lab</h2>
+                <h2 class="w3-text-grey w3-padding-10"><i
+                        class="fa fa-cube fa-fw w3-margin-right w3-xxlarge w3-text-teal"></i>Book a Lab</h2>
 
-                    <!--Search Button-->
+                <!--Search Button-->
 
-                    <div class="main" id="main">
-                        <form id="myForm">
-                            <div class="mt-1">
-                                <p>Search Labs by Date:</p>
-                                <input type="date" name="date" id="date" required>
-                                <button class=" fa fa-search btn btn-primary ml-auto" data-toggle="tooltip"
-                                        title="Search"
-                                        type="submit">
-                                </button>
-                            </div>
-                        </form>
-                    </div>
+                <div class="main" id="main">
+                    <form id="myForm">
+                        <div class="row">
 
-                    <!---Loads Search.jsp-->
+                            <label>Search Labs by Date :</label>
+                            <input class="my-input" type="date" name="date" id="date" required style="width: 200px">
 
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <div class="container-fluid" id="lab_name"
-                                 style="margin-top: 50px;margin-bottom: 50px; width: 95%; ">
+                            <button class=" fa fa-search btn-primary" data-toggle="tooltip"
+                                    style="border-radius: 50%; padding-left: 15px; padding-right: 15px"
+                                    title="Search"
+                                    type="submit">
+                            </button>
 
-                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <!---Loads Search.jsp-->
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="container-fluid" id="lab_name"
+                             style="margin-top: 50px;margin-bottom: 50px; width: 95%; ">
+
                         </div>
                     </div>
+                </div>
 
-            </div><br><br>
+            </div>
+            <br><br>
 
             <div class="w3-container w3-card w3-white">
 
-                    <div class="row" id="labs">
+                <div class="row" id="labs">
 
 
-                    </div>
+                </div>
 
-                    <!-- <div style="width: 100%; height:300px"></div>-->
-
+                <!-- <div style="width: 100%; height:300px"></div>-->
 
 
                 <!-- End Right Column -->
@@ -252,52 +301,70 @@
     </div>
 
     <footer class="w3-container w3-teal w3-center w3-margin-top">
-        <p>Find me on social media.</p>
-        <i class="fa fa-facebook-official w3-hover-opacity"></i>
-        <i class="fa fa-instagram w3-hover-opacity"></i>
-        <i class="fa fa-snapchat w3-hover-opacity"></i>
-        <i class="fa fa-pinterest-p w3-hover-opacity"></i>
-        <i class="fa fa-twitter w3-hover-opacity"></i>
-        <i class="fa fa-linkedin w3-hover-opacity"></i>
-        <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-    </footer>
+        <div style="height: 100px">
 
+        </div>
+    </footer>
+        <%
+        }catch (SQLException e){
+        e.printStackTrace();
+        }
+%>
+
+
+    <script type="text/javascript">
+        $(function () {
+            $("#myForm").submit(function (e) {
+                e.preventDefault();
+                $("#lab_name").load("jsp/search.jsp?" + $("#myForm").serialize());
+
+                if ($('#labs').length) {
+                    $("#labs").hide();
+
+                }
+            });
+
+
+        });
+        document.getElementById("date").valueAsDate = new Date();
+    </script>
+
+    <script>
+        var myIndex = 0;
+        carousel();
+
+        function carousel() {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            myIndex++;
+            if (myIndex > x.length) {
+                myIndex = 1
+            }
+            x[myIndex - 1].style.display = "block";
+            setTimeout(carousel, 4000); // Change image every 2 seconds
+        }
+    </script>
+    <script>
+        function openForm() {
+            document.getElementById("myForm1").style.display = "block";
+            // document.getElementById("edit").style.background="green";
+            document.getElementById("edit").style.border = "thin solid #0000FF";
+//            document.getElementById("edit").style.borderColor="green";
+
+        }
+
+        function closeForm() {
+            document.getElementById("myForm1").style.display = "none";
+            document.getElementById("edit").style.border = "0px";
+
+        }
+    </script>
+
+    <script>
+        document.onload = document.getElementById("myForm1").style.display = "none";
+    </script>
 </body>
 </html>
-
-
-<script type="text/javascript">
-    $(function () {
-        $("#myForm").submit(function (e) {
-            e.preventDefault();
-            $("#lab_name").load("jsp/search.jsp?" + $("#myForm").serialize());
-
-            if ($('#labs').length) {
-                $("#labs").hide();
-
-            }
-        });
-
-
-    });
-    document.getElementById("date").valueAsDate = new Date();
-</script>
-
-<script>
-    var myIndex = 0;
-    carousel();
-
-    function carousel() {
-        var i;
-        var x = document.getElementsByClassName("mySlides");
-        for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none";
-        }
-        myIndex++;
-        if (myIndex > x.length) {
-            myIndex = 1
-        }
-        x[myIndex - 1].style.display = "block";
-        setTimeout(carousel, 2000); // Change image every 2 seconds
-    }
-</script>
