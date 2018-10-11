@@ -109,7 +109,7 @@
             <!-- Page Content -->
             <h1>Update Lab Details</h1>
             <hr>
-            <form action="jsp/update_user.jsp" method="post">
+            <form action="/updateUser" method="post">
                 <div class="card">
                     <div class="card-header">
                         Update the Personal

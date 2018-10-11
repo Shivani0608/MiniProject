@@ -11,7 +11,6 @@
     <table id="tab1" class="cell-border stripe hover row-border " style="width:100%;">
         <thead>
         <tr>
-            <th></th>
             <th>Lab Name</th>
             <th>From</th>
             <th>To</th>
@@ -31,22 +30,17 @@
             try {
                 date1 = request.getParameter("date");
 //                out.print(date1);
-//                System.out.println(date1);
+                System.out.println(date1);
                 date = new SimpleDateFormat("yyyy-MM-dd").parse(date1);
                 day = date.getDay();
                 Connection con = myDB.getCon();
-                PreparedStatement stmt = con.prepareStatement("select * from lab_time inner join" +
-                        " lab_details on lab_time.lab_no = lab_details.lab_no " +
-                        "where lab_time.avail_day = ?");
+                PreparedStatement stmt = con.prepareStatement("select * from lab_time lt where lt.lab_no not in(select lab_no from lab_booked where booked_date in ('"+date1+"')) and lt.avail_day = "+day+"");
                 /*PreparedStatement stmt1=con.prepareStatement("select * from event_description")*/
-                stmt.setInt(1, day);
+                //stmt.setInt(1, day);
                 ResultSet rs = stmt.executeQuery();
 //                out.print("<form method='post' action='labs.jsp' >");
                 while (rs.next()) {
                     out.print("<tr>");
-                    out.print("<td style='width:100px;'>");
-                    out.print("<img src='data:image/png; base64," + Base64.getEncoder().encodeToString(rs.getBytes("photo")) + "' style='height:50px;width:50px'");
-                    out.print("</td>");
                     out.print("<td>");
                     out.print("<button class='mybtn' onclick='openLabDetails(this)' data-lab='" + rs.getString("lab_id") + "'>");
                     out.print("<h4>" + rs.getString(2) + "</h4>");
